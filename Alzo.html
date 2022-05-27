@@ -19,9 +19,9 @@
 
           background-color: #111b21;
           height: 100%;
-            margin:0;
-            padding:0; 
-            border:0;
+          margin:0;
+          padding:0; 
+          border:0;
         }
 
         .AlzoTextFeed {  
@@ -35,7 +35,6 @@
             text-align: center;
         }
 
-        body { margin: 0; padding: 0; }
 
         .AlzoDivFeed {  
 
@@ -63,7 +62,7 @@
 
       <div style="display: flex; align-items: center;">
         
-        <img dir="auto" src="https://i.ibb.co/DMXVk4X/alzo-strong-app.png" width="30px" height="30px">
+        <img id="earthqukesimagenes" dir="auto" src="https://i.ibb.co/MCWTwnP/alzo-weak-app.png" width="30px" height="30px">
 
         <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
         text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
@@ -200,6 +199,7 @@ map.touchZoomRotate.disableRotation();
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
 
+
 if (magitude > 1.0){
   document.getElementById('earthqukesimagenes').src='https://i.ibb.co/m98BYv8/alzo-noload-app-1.png'
 }
@@ -218,6 +218,7 @@ if (magitude > 6.0){
 
 
 
+ 
       const chapters = {
         'Earthquake': {
           center: e.lngLat,
