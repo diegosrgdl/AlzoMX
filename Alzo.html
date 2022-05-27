@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet'> 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script> 
+    <link rel="icon" type="image/png" href="alzoAppLogo.png">
+    <title>AlzoMX | Mapa de registros sismicos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    
+    html,
+        body {
+
+          background-color: #111b21;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+
+        .AlzoTextFeed {  
+
+            font-family: "Lato", Lato;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            margin: 0%;
+            text-align: center;
+        }
+
+        .AlzoDivFeed {  
+
+        background-color: rgba(34, 34, 34, 0.4);
+        backdrop-filter: blur(3px);
+        orientation: horizontal;
+        position: absolute;
+        border-radius: 15px;
+        padding: 15px;
+        height: max-content;
+        width: 230px;
+        right: 10px; 
+        top: 20px;
+        padding: 15px;
+        display: inline-block;
+    }
+    
+    </style>
+</head>
+
+<body>
+    
+    <div id='map' style='width: 100%; height: 100%;'></div>
+    <div class="AlzoDivFeed">
+
+      <div style="display: flex; align-items: center;">
+        
+        <img dir="auto" src="Resources/alzo_noload_app.png" width="30px" height="30px">
+
+        <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
+        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
+        -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px;">Lugar</span>
+
+    </div>
+
+    <div style="display: flex; align-items: center; margin-top: 12px;">
+      
+      <span dir="auto" class="AlzoTextFeed" style="font-size: 16px; 
+      color: rgb(170, 170, 170); margin-left: 10px;">magnitud USGS:</span>
+      
+      <div id="AlzoMagnitudeBorder" dir="auto" style=" opacity: .5; margin-left: 5px;
+      background-color: rgb(36, 36, 36); padding: 3px; color: rgb(170, 170, 170);
+      border:1px solid rgb(36, 36, 36); border-radius: 9px;">
+      
+      <span id="MagAlzo" class="AlzoTextFeed" 
+      dir="auto" style=" text-transform: uppercase; font-size: 11px;
+      color: rgb(255, 255, 255);" style-target="bold">NON</span>
+      
+    </div>
+  </div>
+
+
+      <div style="display: flex; align-items: center; margin-top: 9px;">
+        
+        <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
+        color: rgb(170, 170, 170); margin-left: 10px;">fecha:</span>
+        
+        <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
+        background-color: rgb(36, 36, 36); padding: 3px;
+         color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
+        border-radius: 9px;  opacity: .5;">
+    
+    <span id="TimeAlzo" class="AlzoTextFeed" dir="auto"
+    style="font-size: 11px; color: rgb(255, 255, 255);" 
+    style-target="bold">NON</span>
+  
+  </div>
+</div>
+    
+  <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
+
+
+
+
+
+    <script>
+
+  
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
+    const map = new mapboxgl.Map({
+    container: 'map', 
+    style: 'mapbox://styles/mapbox/dark-v10', 
+    center: [-74.5, 40], 
+    zoom: 3,
+    attributionControl: false })
+
+    .addControl(new mapboxgl.AttributionControl({
+customAttribution: 'AlzoMX'
+}));
+
+    map.on('load', () => {
+        map.addSource('earthquakes', {
+
+           // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
+            
+           type: 'geojson',
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson' });
+        
+         map.addLayer({
+            
+        'id': 'earthquakes-layer',
+        'type': 'circle',
+        'source': 'earthquakes',
+        'paint': {
+
+           "circle-opacity": 0.5,
+           'circle-radius': {
+            'property': 'mag',
+              'stops': [
+              [0, 8],
+              [1, 8],
+              [2, 8],
+              [3, 8],
+              [4, 9],
+              [5, 12],
+              [6, 14],
+              [7, 20],
+              [8, 35],
+              [9, 35],
+              [10, 60],
+              ]
+            },
+
+            'circle-color': {
+              'property': 'mag',
+              'stops': [
+              [0, '#5AB8A6'],
+              [1, '#5AB8A6'],
+              [2, '#5AB8A6'],
+              [3, '#5AB8A6'],
+              [4, '#22BF57'],
+              [5, '#FCA217'],
+              [6, '#FC6D17'],
+              [7, '#F02B00'],
+              [8, '#BC2DFA'],
+              [9, '#BC2DFA'],
+              [10, '#BC2DFA'],
+              ]
+            },
+        }
+    }); 
+
+    map.on('click', 'earthquakes-layer', (e) => {
+
+      var magitude = e.features[0].properties.mag;
+      var magType = e.features[0].properties.magType;
+      var place = e.features[0].properties.place;
+      var times = e.features[0].properties.time;
+      var latlong = e.features[0].properties.coordinates;
+
+      var date = new Date(times); 
+
+      var Year = date.getFullYear();
+      var Month = date.getMonth() + 1;
+      var Today = date.getDate();
+      var Hours = date.getHours();
+      var Minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+
+      document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
+      document.getElementById('AlzoPlaceFeed').innerText = place
+      document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
+
+
+      const chapters = {
+        'Earthquake': {
+          center: e.lngLat,
+          zoom: 4.9
+        }
+      }
+
+      map.flyTo(chapters['Earthquake']);
+
+    });
+}); 
+
+    map.on('click', (e) => {
+      document.getElementById('MagAlzo').innerText = 'Mag'
+});
+
+</script>
+
+  </body> 
+  </html>
