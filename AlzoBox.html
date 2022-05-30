@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>AlzoMX | Mapa de registros sismicos</title>
+    <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet'> 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script> 
+
+
+
+    <style>
+    
+    html,
+        body {
+
+          background-color: #111b21;
+          height: 100%;
+          margin:0;
+          padding:0; 
+          border:0;
+        }
+
+        #marker {
+background-image: url('https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png');
+background-size: cover;
+width: 30px;
+height: 30px;
+}
+    
+    </style>
+</head>
+<body>
+    
+
+    <div id='map' style='width: 100%; height: 100%;'></div>
+
+
+
+    <script>
+        
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
+    const map = new mapboxgl.Map({
+    container: 'map', 
+    style: 'mapbox://styles/mapbox/dark-v10', 
+    center: [-74.5, 40], 
+    zoom: 3,
+    attributionControl: false })
+    .addControl(new mapboxgl.AttributionControl({
+        customAttribution: 'AlzoMX'
+    }));
+    map.touchZoomRotate.disableRotation();
+
+
+
+    
+    var x = document.getElementById("demo");
+
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+
+function showPosition(position) {
+
+    
+const el = document.createElement('div');
+el.id = 'marker';
+new mapboxgl.Marker(el)
+.setLngLat([position.coords.longitude, position.coords.latitude])
+.addTo(map);
+
+}
+
+
+</script>
+
+  </body> 
+  </html>
