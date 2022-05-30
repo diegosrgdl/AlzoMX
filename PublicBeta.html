@@ -52,14 +52,19 @@
         padding: 15px;
         display: inline-block;
     }
+
+
+    
     
     </style>
 </head>
 
 <body>
     
-    <div id='map' style='width: 100%; height: 100%;'></div>
-    <div class="AlzoDivFeed">
+    <div id='map' style='width: 100%; height: 100%; '></div>
+
+
+    <div class="AlzoDivFeed" id="AlzoQuakeView" style="visibility: hidden;">
 
       <div style="display: flex; align-items: center;">
         
@@ -102,6 +107,153 @@
   
   </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="AlzoDivFeed" id="AlzoEarthquakeView">
+
+  <div style="display: flex; align-items: center;">
+    <img dir="auto" src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" width="35px" height="35px">
+
+
+    <div>
+    <span dir="auto" class="AlzoTextFeed" style=" text-align: start; overflow: hidden;
+    text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
+    -webkit-box-orient: vertical; color: rgb(255, 255, 255); font-size: 15px; margin-left: 5px;">Diego Rodriguez Garcia</span>
+    
+    <span dir="auto" class="AlzoTextFeed"  style=" text-align: start; overflow: hidden;
+    text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
+    -webkit-box-orient: vertical; color: rgb(153, 153, 153); font-size: 11px; margin-left: 5px; margin-top: 3px;">Nezahualcoyotl, Edo. Mex</span>
+    
+  </div>
+</div>
+
+<div style="display: flex; align-items: center; margin-top: 12px;">
+  <div style="margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
+      <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 12px; color: rgb(196, 196, 196);">Todo esta correcto</span>
+      <img dir="auto" src="https://i.ibb.co/Y21PywM/image-9.png"  width="16px" height="16px" style="margin-right:10px; ">
+    </div> 
+  </div>
+
+  <div style="margin-top: 8px;">
+    <div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
+      <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 12px; color: rgb(196, 196, 196);">Conectado al servidor (MX)</span>
+      <img dir="auto" src="https://i.ibb.co/8B1JPNs/image-6.png" width="13px" height="13px" style="margin-right:10px;">
+    </div> 
+  </div>
+</div>
+
+
+
+<hr class="solid" style="border: 00; border-top: 1px solid rgb(53, 53, 53); margin-top: 13px; margin-bottom: 12px; margin-left: 5px; margin-right: 5px;">
+
+
+<div>
+<div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
+  <img dir="auto" src="https://i.ibb.co/ZGrbQD7/image-4.png" width="13px" height="13px" style="margin-left:10px;">
+  <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 13px; color: rgb(52, 141, 236); font-weight: 500;">Configuracion de Avisos</span>
+ </div> 
+</div>
+
+<div style="margin-top: 8px;">
+<div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
+  <img dir="auto" src="https://i.ibb.co/prBX3tR/image-5.png" width="13px" height="13px" style="margin-left:10px;">
+  <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 13px; color: rgb(52, 141, 236); font-weight: 500;">Ver ultimas novedades</span>
+ </div> 
+</div>
+
+<h1 class="AlzoTextFeed" style="font-size: 10px; color: rgb(121, 121, 121); text-align: center;  margin-top: 10px">Esta es una version BETA, Proximamente tendras mas funciones para la web.</h1>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
   <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
 
@@ -174,6 +326,9 @@ map.touchZoomRotate.disableRotation();
 
     map.on('click', 'earthquakes-layer', (e) => {
 
+      document.getElementById("AlzoEarthquakeView").style.visibility = "hidden";
+      document.getElementById("AlzoQuakeView").style.visibility = "visible";
+
       var magitude = e.features[0].properties.mag;
       var magType = e.features[0].properties.magType;
       var place = e.features[0].properties.place;
@@ -209,6 +364,7 @@ map.touchZoomRotate.disableRotation();
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
 
+
       const chapters = {
         'Earthquake': {
           center: e.lngLat,
@@ -220,6 +376,14 @@ map.touchZoomRotate.disableRotation();
 
     });
 }); 
+
+
+map.on('click', (e) => {
+
+document.getElementById("AlzoEarthquakeView").style.visibility = "visible";
+document.getElementById("AlzoQuakeView").style.visibility = "hidden";
+
+});
 
 </script>
 
