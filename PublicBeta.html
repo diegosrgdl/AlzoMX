@@ -53,6 +53,12 @@
         padding: 15px;
         display: inline-block;
     }
+    #marker {
+background-image: url('https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png');
+background-size: cover;
+width: 30px;
+height: 30px;
+}
     
     </style>
 </head>
@@ -237,6 +243,43 @@ if (magitude > 5.9){
     });
 }); 
 
+
+
+
+
+
+
+
+
+
+
+
+
+var x = document.getElementById("demo");
+    
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+
+
+
+
+
+
+
+
+  
+  function showPosition(position) {
+      
+    const el = document.createElement('div');
+    el.id = 'marker';
+    new mapboxgl.Marker(el)
+    .setLngLat([position.coords.longitude, position.coords.latitude])
+    .addTo(map);
+
+}
 
 </script>
 
