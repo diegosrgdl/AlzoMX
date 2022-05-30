@@ -37,7 +37,6 @@
             text-align: center;
         }
 
-
         .AlzoDivFeed {  
 
         background-color: rgba(34, 34, 34, 0.4);
@@ -53,12 +52,6 @@
         padding: 15px;
         display: inline-block;
     }
-    #marker {
-background-image: url('https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png');
-background-size: cover;
-width: 30px;
-height: 30px;
-}
     
     </style>
 </head>
@@ -75,11 +68,10 @@ height: 30px;
         <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
         text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
         -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px;">Lugar</span>
-
     </div>
 
     <div style="display: flex; align-items: center; margin-top: 12px;">
-      
+
       <span dir="auto" class="AlzoTextFeed" style="font-size: 16px; 
       color: rgb(170, 170, 170); margin-left: 10px;">magnitud USGS:</span>
       
@@ -90,7 +82,6 @@ height: 30px;
       <span id="MagAlzo" class="AlzoTextFeed" 
       dir="auto" style=" text-transform: uppercase; font-size: 11px;
       color: rgb(255, 255, 255);" style-target="bold">NON</span>
-      
     </div>
   </div>
 
@@ -114,13 +105,8 @@ height: 30px;
     
   <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
 
-
-
-
-
     <script>
 
-  
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
     const map = new mapboxgl.Map({
     container: 'map', 
@@ -141,10 +127,6 @@ map.touchZoomRotate.disableRotation();
             
            type: 'geojson',
             data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson' });
-
-
-            
-
         
          map.addLayer({
             
@@ -208,29 +190,25 @@ map.touchZoomRotate.disableRotation();
       var seconds = date.getSeconds();
 
       if (magitude > 0.0){
-  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/MhcLWk8/alzo-imperceptible-app.png'
-}
+        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/MhcLWk8/alzo-imperceptible-app.png'
+      }
 
-if (magitude > 3.9){
-  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/8NFBbZS/alzo-weak.png'
-}
+      if (magitude > 3.9){
+        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/8NFBbZS/alzo-weak.png'
+      }
 
-if (magitude > 4.9){
-  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/gjKkgWT/alzo-moderate-app.png'
-}
+      if (magitude > 4.9){
+        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/gjKkgWT/alzo-moderate-app.png'
+      }
 
-if (magitude > 5.9){
-  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/DMXVk4X/alzo-strong-app.png'
-}
-
-
+      if (magitude > 5.9){
+        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/DMXVk4X/alzo-strong-app.png'
+      }
 
       document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
 
-
- 
       const chapters = {
         'Earthquake': {
           center: e.lngLat,
@@ -242,44 +220,6 @@ if (magitude > 5.9){
 
     });
 }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-var x = document.getElementById("demo");
-    
-    if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-
-
-
-
-
-
-
-
-  
-  function showPosition(position) {
-      
-    const el = document.createElement('div');
-    el.id = 'marker';
-    new mapboxgl.Marker(el)
-    .setLngLat([position.coords.longitude, position.coords.latitude])
-    .addTo(map);
-
-}
 
 </script>
 
