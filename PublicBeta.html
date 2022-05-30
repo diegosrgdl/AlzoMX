@@ -2,16 +2,18 @@
 <html>
 
     <head>
-        <title>AlzoMX | Mapa de registros sismicos</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
-        <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet'> 
-        <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script> 
-        
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>AlzoMX | Mapa de registros sismicos</title>
+    <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet'> 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script> 
+
+
+
     <style>
     
     html,
@@ -132,7 +134,11 @@ map.touchZoomRotate.disableRotation();
            // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
             
            type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson' });
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson' });
+
+
+            
+
         
          map.addLayer({
             
@@ -194,14 +200,28 @@ map.touchZoomRotate.disableRotation();
       var Hours = date.getHours();
       var Minutes = date.getMinutes();
       var seconds = date.getSeconds();
-        
+
+      if (magitude > 0.0){
+  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/m98BYv8/alzo-noload-app-1.png'
+}
+
+if (magitude > 3.9){
+  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/8NFBbZS/alzo-weak.png'
+}
+
+if (magitude > 4.9){
+  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/gjKkgWT/alzo-moderate-app.png'
+}
+
+if (magitude > 5.9){
+  document.getElementById('earthqukesimagenes').src='https://i.ibb.co/DMXVk4X/alzo-strong-app.png'
+}
+
+
 
       document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
-
-
-
 
 
  
@@ -217,9 +237,6 @@ map.touchZoomRotate.disableRotation();
     });
 }); 
 
-    map.on('click', (e) => {
-      document.getElementById('MagAlzo').innerText = 'Mag'
-});
 
 </script>
 
