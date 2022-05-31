@@ -52,19 +52,21 @@
         padding: 15px;
         display: inline-block;
     }
-
-
     
-    
+
+    #markerpopocatepetl {
+background-image: url('https://i.ibb.co/74DyZys/descarga.gif');
+background-size: cover;
+width: 35px;
+height: 35px;
+}
     </style>
 </head>
 
 <body>
     
-    <div id='map' style='width: 100%; height: 100%; '></div>
-
-
-    <div class="AlzoDivFeed" id="AlzoQuakeView" style="visibility: hidden;">
+    <div id='map' style='width: 100%; height: 100%;'></div>
+    <div class="AlzoDivFeed">
 
       <div style="display: flex; align-items: center;">
         
@@ -109,154 +111,6 @@
 </div>
 
 
-<div style="margin-top: 10px;" onclick="AlzoHidden()">
-  <div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
-    <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 13px; color: rgb(236, 52, 52); font-weight: 500;">Cerrar resultados</span>
-   </div> 
-  </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="AlzoDivFeed" id="AlzoEarthquakeView">
-
-  <div style="display: flex; align-items: center;">
-    <img dir="auto" src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" width="35px" height="35px">
-
-
-    <div>
-    <span dir="auto" class="AlzoTextFeed" style=" text-align: start; overflow: hidden;
-    text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
-    -webkit-box-orient: vertical; color: rgb(255, 255, 255); font-size: 15px; margin-left: 5px;">Diego Rodriguez Garcia</span>
-    
-    <span dir="auto" class="AlzoTextFeed"  style=" text-align: start; overflow: hidden;
-    text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
-    -webkit-box-orient: vertical; color: rgb(153, 153, 153); font-size: 11px; margin-left: 5px; margin-top: 3px;">Nezahualcoyotl, Edo. Mex</span>
-    
-  </div>
-</div>
-
-<div style="display: flex; align-items: center; margin-top: 12px;">
-  <div style="margin-top: 8px;">
-    <div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
-      <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 12px; color: rgb(196, 196, 196);">Todo esta correcto</span>
-      <img dir="auto" src="https://i.ibb.co/Y21PywM/image-9.png"  width="16px" height="16px" style="margin-right:10px; ">
-    </div> 
-  </div>
-
-  <div style="margin-top: 8px;">
-    <div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
-      <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 12px; color: rgb(196, 196, 196);">Conectado al servidor (MX)</span>
-      <img dir="auto" src="https://i.ibb.co/8B1JPNs/image-6.png" width="13px" height="13px" style="margin-right:10px;">
-    </div> 
-  </div>
-</div>
-
-
-
-<hr class="solid" style="border: 00; border-top: 1px solid rgb(53, 53, 53); margin-top: 13px; margin-bottom: 12px; margin-left: 5px; margin-right: 5px;">
-
-
-<div>
-<div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
-  <img dir="auto" src="https://i.ibb.co/ZGrbQD7/image-4.png" width="13px" height="13px" style="margin-left:10px;">
-  <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 13px; color: rgb(52, 141, 236); font-weight: 500;">Configuracion de Avisos</span>
- </div> 
-</div>
-
-<div style="margin-top: 8px;">
-<div style="display: flex; align-items: center; margin-left: 5px; background-color: rgb(36, 36, 36); border-radius: 9px; padding-bottom: 8px; padding-top: 8px">
-  <img dir="auto" src="https://i.ibb.co/prBX3tR/image-5.png" width="13px" height="13px" style="margin-left:10px;">
-  <span class="AlzoTextFeed" style="margin-left: 7px; font-size: 13px; color: rgb(52, 141, 236); font-weight: 500;">Ver ultimas novedades</span>
- </div> 
-</div>
-
-<h1 class="AlzoTextFeed" style="font-size: 10px; color: rgb(121, 121, 121); text-align: center;  margin-top: 10px">Esta es una version BETA, Proximamente tendras mas funciones para la web.</h1>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -267,23 +121,36 @@
 
     <script>
 
-      function AlzoHidden(){
-
-      document.getElementById("AlzoEarthquakeView").style.visibility = "visible";
-      document.getElementById("AlzoQuakeView").style.visibility = "hidden";
-}
-
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
     const map = new mapboxgl.Map({
     container: 'map', 
     style: 'mapbox://styles/mapbox/dark-v10', 
-    center: [-74.5, 40], 
-    zoom: 3,
+    center: [-99.1304, 19.4730], 
+    zoom: 5.4,
     attributionControl: false })
 
     .addControl(new mapboxgl.AttributionControl({
 customAttribution: 'AlzoMX'
 }));
+
+const e4l = document.createElement('div');
+e4l.id = 'markerpopocatepetl';
+new mapboxgl.Marker(e4l)
+.setLngLat([-103.6170, 19.5121])
+.addTo(map);
+
+
+const e2l = document.createElement('div');
+e2l.id = 'markerpopocatepetl';
+new mapboxgl.Marker(e2l)
+.setLngLat([-98.6274, 19.0226])
+.addTo(map);
+
+const e223l = document.createElement('div');
+e223l.id = 'markerpopocatepetl';
+new mapboxgl.Marker(e223l)
+.setLngLat([-90.8808, 14.4743])
+.addTo(map);
 
 map.touchZoomRotate.disableRotation();
     map.on('load', () => {
@@ -292,7 +159,7 @@ map.touchZoomRotate.disableRotation();
            // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
             
            type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson' });
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson' });
         
          map.addLayer({
             
@@ -338,10 +205,9 @@ map.touchZoomRotate.disableRotation();
         }
     }); 
 
-    map.on('click', 'earthquakes-layer', (e) => {
+  
 
-      document.getElementById("AlzoEarthquakeView").style.visibility = "hidden";
-      document.getElementById("AlzoQuakeView").style.visibility = "visible";
+    map.on('click', 'earthquakes-layer', (e) => {
 
       var magitude = e.features[0].properties.mag;
       var magType = e.features[0].properties.magType;
@@ -382,7 +248,7 @@ map.touchZoomRotate.disableRotation();
       const chapters = {
         'Earthquake': {
           center: e.lngLat,
-          zoom: 4.9
+          zoom: 5.4
         }
       }
 
@@ -390,8 +256,6 @@ map.touchZoomRotate.disableRotation();
 
     });
 }); 
-
-
 
 </script>
 
