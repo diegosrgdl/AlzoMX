@@ -182,6 +182,14 @@ map.touchZoomRotate.disableRotation();
             
            type: 'geojson',
             data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson' });
+
+            map.addSource('plates', {
+
+// Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
+ 
+type: 'geojson',
+ data: 'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json' });
+
         
          map.addLayer({ 
             
@@ -226,8 +234,22 @@ map.touchZoomRotate.disableRotation();
             },
         }
     }); 
+    
+    map.addLayer({
+      'id': 'plates',
+      'type': 'line',
+      'source': 'plates',
+      'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-color': '#FF9F33',
+        'line-width': 2
+}
+});
 
-  
+
 
     map.on('click', 'earthquakes-layer', (e) => {
 
@@ -301,6 +323,7 @@ function deg2rad(deg) {
 
     });
 }); 
+
 
 </script>
 
