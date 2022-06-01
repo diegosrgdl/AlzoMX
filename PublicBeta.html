@@ -40,7 +40,10 @@
         .AlzoDivFeed {  
 
         background-color: rgba(34, 34, 34, 0.4);
-        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px); 
+        -moz-backdrop-filter: blur(3px);
+         -ms-backdrop-filter: blur(3px);
+         backdrop-filter: blur(3px);
         orientation: horizontal;
         position: absolute;
         border-radius: 15px;
@@ -77,10 +80,13 @@ height: 35px;
         -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px;">Bienvenido de nuevo</span>
     </div>
 
-    <div style="display: flex; align-items: center; margin-top: 12px;">
+    <hr class="solid" style="border: 00; border-top: 1px solid rgb(53, 53, 53); margin-top: 10px; margin-bottom: 8px; margin-left: 5px; margin-right: 5px;">
+
+
+    <div style="display: flex; align-items: center;">
 
       <span dir="auto" class="AlzoTextFeed" style="font-size: 16px; 
-      color: rgb(170, 170, 170); margin-left: 10px;">magnitud USGS:</span>
+      color: rgb(170, 170, 170); margin-left: 10px;">Magnitud USGS:</span>
       
       <div id="AlzoMagnitudeBorder" dir="auto" style=" opacity: .5; margin-left: 5px;
       background-color: rgb(36, 36, 36); padding: 3px; color: rgb(170, 170, 170);
@@ -92,11 +98,10 @@ height: 35px;
     </div>
   </div>
 
-
       <div style="display: flex; align-items: center; margin-top: 9px;">
         
         <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
-        color: rgb(170, 170, 170); margin-left: 10px;">fecha:</span>
+        color: rgb(170, 170, 170); margin-left: 10px;">Fecha:</span>
         
         <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
         background-color: rgb(36, 36, 36); padding: 3px;
@@ -109,8 +114,6 @@ height: 35px;
   
   </div>
 </div>
-
-
 
 
 
@@ -161,7 +164,7 @@ map.touchZoomRotate.disableRotation();
            type: 'geojson',
             data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson' });
         
-         map.addLayer({
+         map.addLayer({ 
             
         'id': 'earthquakes-layer',
         'type': 'circle',
@@ -223,6 +226,29 @@ map.touchZoomRotate.disableRotation();
       var Hours = date.getHours();
       var Minutes = date.getMinutes();
       var seconds = date.getSeconds();
+
+
+      alert(getDistanceFromLatLonInKm(19.4325,-99.1330,  16.992303789676217, -99.78699225440556).toFixed(1));
+
+      
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
 
       if (magitude > 0.0){
         document.getElementById('earthqukesimagenes').src='https://i.ibb.co/MhcLWk8/alzo-imperceptible-app.png'
