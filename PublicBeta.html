@@ -98,21 +98,40 @@ height: 35px;
     </div>
   </div>
 
-      <div style="display: flex; align-items: center; margin-top: 9px;">
+  <div style="display: flex; align-items: center; margin-top: 9px;">
         
-        <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
-        color: rgb(170, 170, 170); margin-left: 10px;">Fecha:</span>
-        
-        <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
-        background-color: rgb(36, 36, 36); padding: 3px;
-         color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
-        border-radius: 9px;  opacity: .5;">
+    <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
+    color: rgb(170, 170, 170); margin-left: 10px;">Fecha:</span>
     
-    <span id="TimeAlzo" class="AlzoTextFeed" dir="auto"
-    style="font-size: 11px; color: rgb(255, 255, 255);" 
-    style-target="bold">Busca un sismo</span>
-  
+    <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
+    background-color: rgb(36, 36, 36); padding: 3px;
+     color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
+    border-radius: 9px;  opacity: .5;">
+
+<span id="TimeAlzo" class="AlzoTextFeed" dir="auto"
+style="font-size: 11px; color: rgb(255, 255, 255);" 
+style-target="bold">Busca un sismo</span>
+</div>
+
+
   </div>
+
+  <div style="display: flex; align-items: center; margin-top: 9px;">
+        
+    <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
+    color: rgb(170, 170, 170); margin-left: 10px;">Distancia:</span>
+    
+    <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
+    background-color: rgb(36, 36, 36); padding: 3px;
+     color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
+    border-radius: 9px;  opacity: .5;">
+
+<span id="DistanceAlzo" class="AlzoTextFeed" dir="auto"
+style="font-size: 11px; color: rgb(255, 255, 255); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; " 
+style-target="bold">Busca un sismo</span>
+</div>
+
+
 </div>
 
 
@@ -228,7 +247,6 @@ map.touchZoomRotate.disableRotation();
       var seconds = date.getSeconds();
 
 
-      alert(getDistanceFromLatLonInKm(19.4325,-99.1330,  16.992303789676217, -99.78699225440556).toFixed(1));
 
       
 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -269,6 +287,7 @@ function deg2rad(deg) {
       document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
+      document.getElementById('DistanceAlzo').innerText = 'a ' + (getDistanceFromLatLonInKm(19.4325,-99.1330,  e.lngLat.lat, e.lngLat.lng).toFixed(1)) + ' km de la Ciudad de Mexico'
 
 
       const chapters = {
