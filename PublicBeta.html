@@ -181,11 +181,14 @@ map.touchZoomRotate.disableRotation();
            // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
             
            type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson' });
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson' });
 
             map.addSource('plates', {
-                type: 'geojson',
-                data: 'https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json' });
+
+// Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
+ 
+type: 'geojson',
+ data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json' });
 
         
          map.addLayer({ 
@@ -291,15 +294,15 @@ function deg2rad(deg) {
         document.getElementById('earthqukesimagenes').src='https://i.ibb.co/MhcLWk8/alzo-imperceptible-app.png'
       }
 
-      if (magitude > 3.8){
+      if (magitude > 3.9){
         document.getElementById('earthqukesimagenes').src='https://i.ibb.co/8NFBbZS/alzo-weak.png'
       }
 
-      if (magitude > 4.8){
+      if (magitude > 4.9){
         document.getElementById('earthqukesimagenes').src='https://i.ibb.co/gjKkgWT/alzo-moderate-app.png'
       }
 
-      if (magitude > 5.8){
+      if (magitude > 6.0){
         document.getElementById('earthqukesimagenes').src='https://i.ibb.co/DMXVk4X/alzo-strong-app.png'
       }
 
