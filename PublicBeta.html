@@ -76,7 +76,7 @@ height: 35px;
         <img id="earthqukesimagenes" dir="auto" src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" width="30px" height="30px">
 
         <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
-        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1;  font-size: 15px;
+        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1;  font-size: 14px;
         -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px; ">Bienvenido de nuevo</span>
     </div>
 
@@ -133,15 +133,10 @@ style="font-size: 11px; color: rgb(255, 255, 255);   text-align: start; text-ove
 
 
 </div>
-
-
-
-
-
+</div>
     
   <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
 
-     
     <script>
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
@@ -183,7 +178,7 @@ map.touchZoomRotate.disableRotation();
            // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
             
            type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson' });
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson' });
 
             map.addSource('plates', {
 
@@ -327,7 +322,6 @@ function deg2rad(deg) {
 
 
 </script>
-
 
   </body> 
   </html>
