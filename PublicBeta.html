@@ -76,8 +76,8 @@ height: 35px;
         <img id="earthqukesimagenes" dir="auto" src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" width="30px" height="30px">
 
         <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
-        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; 
-        -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px;">Bienvenido de nuevo</span>
+        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1;  font-size: 15px;
+        -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px; ">Bienvenido de nuevo</span>
     </div>
 
     <hr class="solid" style="border: 00; border-top: 1px solid rgb(53, 53, 53); margin-top: 10px; margin-bottom: 8px; margin-left: 5px; margin-right: 5px;">
@@ -127,8 +127,8 @@ style-target="bold">Busca un sismo</span>
     border-radius: 9px;  opacity: .5;">
 
 <span id="DistanceAlzo" class="AlzoTextFeed" dir="auto"
-style="font-size: 11px; color: rgb(255, 255, 255); text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; " 
-style-target="bold">Busca un sismo</span>
+style="font-size: 11px; color: rgb(255, 255, 255);   text-align: start; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; " 
+>Busca un sismo</span>
 </div>
 
 
@@ -140,13 +140,15 @@ style-target="bold">Busca un sismo</span>
 
     
   <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
-
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3318279020298437"
+     crossorigin="anonymous"></script>
+     
     <script>
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
     const map = new mapboxgl.Map({
     container: 'map', 
-    style: 'mapbox://styles/mapbox/satellite-streets-v11', 
+    style: 'mapbox://styles/mapbox/dark-v10', 
     center: [-99.1304, 19.4730], 
     zoom: 5.4,
     attributionControl: false })
@@ -175,13 +177,14 @@ new mapboxgl.Marker(e223l)
 .addTo(map);
 
 map.touchZoomRotate.disableRotation();
+
     map.on('style.load', () => {
         map.addSource('earthquakes', {
 
            // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
             
            type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson' });
+            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson' });
 
             map.addSource('plates', {
 
@@ -234,7 +237,8 @@ type: 'geojson',
             },
         }
     }); 
-    
+
+ 
     map.addLayer({
       'id': 'plates',
       'type': 'line',
@@ -246,10 +250,8 @@ type: 'geojson',
       'paint': {
         'line-color': '#FF9F33',
         'line-width': 2
-}
+      }
 });
-
-
 
     map.on('click', 'earthquakes-layer', (e) => {
 
@@ -309,7 +311,7 @@ function deg2rad(deg) {
       document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
       document.getElementById('AlzoPlaceFeed').innerText = place
       document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
-      document.getElementById('DistanceAlzo').innerText = 'a ' + (getDistanceFromLatLonInKm(19.4325,-99.1330,  e.lngLat.lat, e.lngLat.lng).toFixed(1)) + ' km de la Ciudad de Mexico'
+      document.getElementById('DistanceAlzo').innerText = (getDistanceFromLatLonInKm(19.4325,-99.1330,  e.lngLat.lat, e.lngLat.lng).toFixed(1)) + ' km de la Ciudad de Mexico'
 
 
       const chapters = {
@@ -326,6 +328,17 @@ function deg2rad(deg) {
 
 
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3318279020298437"
+     crossorigin="anonymous"></script>
+<!-- AlzoMX -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-3318279020298437"
+     data-ad-slot="8752276693"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
   </body> 
   </html>
