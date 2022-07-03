@@ -9,9 +9,8 @@
     <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
     <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet'> 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js'></script> 
-
+     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
 
 
     <style>
@@ -144,12 +143,18 @@ style="font-size: 11px; color: rgb(255, 255, 255);   text-align: start; text-ove
     container: 'map', 
     style: 'mapbox://styles/mapbox/dark-v10', 
     center: [-99.1304, 19.4730], 
+        projection: 'globe' // display the map as a 3D globe
+,
     zoom: 5.4,
     attributionControl: false })
 
     .addControl(new mapboxgl.AttributionControl({
 customAttribution: 'AlzoMX'
 }));
+        
+        map.on('style.load', () => {
+map.setFog({}); // Set the default atmosphere style
+});
 
 const e4l = document.createElement('div');
 e4l.id = 'markerpopocatepetl';
