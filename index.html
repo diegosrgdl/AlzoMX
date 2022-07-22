@@ -1,332 +1,86 @@
 <!DOCTYPE html>
 <html>
-
-    <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <title>AlzoMX | Mapa de registros sismicos</title>
-    <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
-    <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
-
-
-    <style>
-    
-    html,
-        body {
-
-          background-color: #111b21;
-          height: 100%;
-          margin:0;
-          padding:0; 
-          border:0;
-        }
-
-        .AlzoTextFeed {  
-
-            font-family: "Lato", Lato;
-            -webkit-box-orient: vertical;
-            text-overflow: ellipsis;
-            -webkit-line-clamp: 1;
-            overflow: hidden;
-            margin: 0%;
-            text-align: center;
-        }
-
-        .AlzoDivFeed {  
-
-        background-color: rgba(34, 34, 34, 0.4);
-        -webkit-backdrop-filter: blur(3px); 
-        -moz-backdrop-filter: blur(3px);
-         -ms-backdrop-filter: blur(3px);
-         backdrop-filter: blur(3px);
-        orientation: horizontal;
-        position: absolute;
-        border-radius: 15px;
-        padding: 15px;
-        height: max-content;
-        width: 230px;
-        right: 10px; 
-        top: 20px;
-        padding: 15px;
-        display: inline-block;
-    }
-    
-
-    #markerpopocatepetl {
-background-image: url('https://i.ibb.co/bQwv6s2/descarga.gif');
-background-size: cover;
-width: 35px;
-height: 35px;
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
-    </style>
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+	
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+</style>
 </head>
-
 <body>
-    
-    <div id='map' style='width: 100%; height: 100%;'></div>
-    <div class="AlzoDivFeed">
 
-      <div style="display: flex; align-items: center;">
-        
-        <img id="earthqukesimagenes" dir="auto" src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" width="30px" height="30px">
-
-        <span dir="auto" class="AlzoTextFeed" id="AlzoPlaceFeed" style=" text-align: start; overflow: hidden;
-        text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1;  font-size: 14px;
-        -webkit-box-orient: vertical; color: rgb(255, 255, 255); margin-left: 10px; ">Bienvenido de nuevo</span>
-    </div>
-
-    <hr class="solid" style="border: 00; border-top: 1px solid rgb(53, 53, 53); margin-top: 10px; margin-bottom: 8px; margin-left: 5px; margin-right: 5px;">
-
-
-    <div style="display: flex; align-items: center;">
-
-      <span dir="auto" class="AlzoTextFeed" style="font-size: 16px; 
-      color: rgb(170, 170, 170); margin-left: 10px;">Magnitud USGS:</span>
-      
-      <div id="AlzoMagnitudeBorder" dir="auto" style=" opacity: .5; margin-left: 5px;
-      background-color: rgb(36, 36, 36); padding: 2px; color: rgb(170, 170, 170);
-      border:1px solid rgb(36, 36, 36); border-radius: 9px;">
-      
-      <span id="MagAlzo" class="AlzoTextFeed" 
-      dir="auto" style=" text-transform: uppercase; font-size: 11px;
-      color: rgb(255, 255, 255);" style-target="bold">Busca un sismo</span>
-    </div>
-  </div>
-
-  <div style="display: flex; align-items: center; margin-top: 9px;">
-        
-    <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
-    color: rgb(170, 170, 170); margin-left: 10px;">Fecha:</span>
-    
-    <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
-    background-color: rgb(36, 36, 36); padding: 2px;
-     color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
-    border-radius: 9px;  opacity: .5;">
-
-<span id="TimeAlzo" class="AlzoTextFeed" dir="auto"
-style="font-size: 11px; color: rgb(255, 255, 255);" 
-style-target="bold">Busca un sismo</span>
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Inicio</a>
+  <a href="#news">Sismos</a>
+  <a href="#contact">Funcionamiento</a>
+  <a href="#about">Contacto</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
 
-
-  </div>
-
-  <div style="display: flex; align-items: center; margin-top: 9px;">
-        
-    <span dir="auto" class="AlzoTextFeed" style="font-size: 16px;
-    color: rgb(170, 170, 170); margin-left: 10px;">Distancia:</span>
-    
-    <div id="AlzoMagnitudeBorder" dir="auto" style="margin-left: 5px; 
-    background-color: rgb(36, 36, 36); padding: 5px;
-     color: rgb(170, 170, 170); border:1px solid rgb(36, 36, 36);
-    border-radius: 9px;  opacity: .5;">
-
-<span id="DistanceAlzo" class="AlzoTextFeed" dir="auto"
-style="font-size: 11px; color: rgb(255, 255, 255);   text-align: start; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; " 
->Busca un sismo</span>
+<div style="padding-left:16px">
+  <h2>Responsive Topnav Example</h2>
+  <p>Resize the browser window to see how it works.</p>
 </div>
 
-
-</div>
-</div>
-    
-  <!-- <audio autoplay="true"  src="PingSismo.ogg"> --->
-
-    <script>
-
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
-    const map = new mapboxgl.Map({
-    container: 'map', 
-    style: 'mapbox://styles/mapbox/dark-v10', 
-    center: [-99.1304, 19.4730], 
-        projection: 'globe' // display the map as a 3D globe
-,
-    zoom: 5.4,
-    attributionControl: false })
-
-    .addControl(new mapboxgl.AttributionControl({
-customAttribution: 'AlzoMX'
-}));
-        
-        map.on('style.load', () => {
-map.setFog({}); // Set the default atmosphere style
-});
-
-const e4l = document.createElement('div');
-e4l.id = 'markerpopocatepetl';
-new mapboxgl.Marker(e4l)
-.setLngLat([-103.6170, 19.5121])
-.addTo(map);
-
-
-const e2l = document.createElement('div');
-e2l.id = 'markerpopocatepetl';
-new mapboxgl.Marker(e2l)
-.setLngLat([-98.6274, 19.0226])
-.addTo(map);
-
-const e223l = document.createElement('div');
-e223l.id = 'markerpopocatepetl';
-new mapboxgl.Marker(e223l)
-.setLngLat([-90.8808, 14.4743])
-.addTo(map);
-
-map.touchZoomRotate.disableRotation();
-
-    map.on('style.load', () => {
-        map.addSource('earthquakes', {
-
-           // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
-            
-           type: 'geojson',
-            data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson' });
-
-            map.addSource('plates', {
-
-// Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
- 
-type: 'geojson',
- data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json' });
-
-        
-         map.addLayer({ 
-            
-        'id': 'earthquakes-layer',
-        'type': 'circle',
-        'source': 'earthquakes',
-        'paint': {
-
-           "circle-opacity": 0.5,
-           'circle-radius': {
-            'property': 'mag',
-              'stops': [
-              [0, 8],
-              [1, 8],
-              [2, 8],
-              [3, 8],
-              [4, 9],
-              [5, 12],
-              [6, 14],
-              [7, 20],
-              [8, 35],
-              [9, 35],
-              [10, 60],
-              ]
-            },
-
-            'circle-color': {
-              'property': 'mag',
-              'stops': [
-              [0, '#5AB8A6'],
-              [1, '#5AB8A6'],
-              [2, '#5AB8A6'],
-              [3, '#5AB8A6'],
-              [4, '#22BF57'],
-              [5, '#FCA217'],
-              [6, '#FC6D17'],
-              [7, '#F02B00'],
-              [8, '#BC2DFA'],
-              [9, '#BC2DFA'],
-              [10, '#BC2DFA'],
-              ]
-            },
-        }
-    }); 
-
- 
-    map.addLayer({
-      'id': 'plates',
-      'type': 'line',
-      'source': 'plates',
-      'layout': {
-        'line-join': 'round',
-        'line-cap': 'round'
-      },
-      'paint': {
-        'line-color': '#FF9F33',
-        'line-width': 2
-      }
-});
-
-    map.on('click', 'earthquakes-layer', (e) => {
-
-      var magitude = e.features[0].properties.mag;
-      var magType = e.features[0].properties.magType;
-      var place = e.features[0].properties.place;
-      var times = e.features[0].properties.time;
-      var latlong = e.features[0].properties.coordinates;
-
-      var date = new Date(times); 
-
-      var Year = date.getFullYear();
-      var Month = date.getMonth() + 1;
-      var Today = date.getDate();
-      const Hours = String(date.getHours()).padStart(2, '0');
-      const Minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
-
-
-
-      
-function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-  var R = 6371; // Radius of the earth in km
-  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-  var dLon = deg2rad(lon2-lon1); 
-  var a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  var d = R * c; // Distance in km
-  return d;
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
 }
-
-function deg2rad(deg) {
-  return deg * (Math.PI/180)
-}
-
-
-      if (magitude > 0.0){
-        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/MhcLWk8/alzo-imperceptible-app.png'
-      }
-
-      if (magitude > 3.9){
-        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/8NFBbZS/alzo-weak.png'
-      }
-
-      if (magitude > 4.9){
-        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/gjKkgWT/alzo-moderate-app.png'
-      }
-
-      if (magitude > 6.0){
-        document.getElementById('earthqukesimagenes').src='https://i.ibb.co/DMXVk4X/alzo-strong-app.png'
-      }
-
-      document.getElementById('MagAlzo').innerText = magType + ' ' + magitude
-      document.getElementById('AlzoPlaceFeed').innerText = place
-      document.getElementById('TimeAlzo').innerText = 'El ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
-      document.getElementById('DistanceAlzo').innerText = (getDistanceFromLatLonInKm(19.4325,-99.1330,  e.lngLat.lat, e.lngLat.lng).toFixed(1)) + ' km de la Ciudad de Mexico'
-
-
-      const chapters = {
-        'Earthquake': {
-          center: e.lngLat,
-          zoom: 5.4
-        }
-      }
-
-      map.flyTo(chapters['Earthquake']);
-
-    });
-}); 
-
-
 </script>
 
-  </body> 
-  </html>
+</body>
+</html>
