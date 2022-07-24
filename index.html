@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth">
     <title>AlzoMX | Servicio de alerta sismica</title>
     <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/kisspng-electrocardiography-pulse-computer-icons-clip-art-runtastic-heart-rate-pro-5adee826450b62.7264616015245578622828%20(3).png">
     <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_ios_ic_app.jpg">
@@ -12,7 +13,6 @@
     <style>
     body {
      margin: 0;
-     font-family: "Open Sans", sans-serif;
      background-color:  rgb(14, 14, 14);
    }
    
@@ -72,15 +72,24 @@
   user-select: none;
  }
 
+  #AmaranthLetter{ 
+
+ font-family: "Amaranth", sans-serif;
+}
+
  .AlzoText{ 
         padding-left: 100px;
         padding-right: 100px;
+        font-family: "Open Sans", sans-serif;
+
     }
  /* APPLYING MEDIA QUERIES */
  @media (max-width: 768px) {
     .AlzoText{ 
         padding-left: 30px;
         padding-right: 20px;
+        font-family: "Open Sans", sans-serif;
+
     }
  .menu { 
   display:none;
@@ -118,6 +127,8 @@
   color: white;
   text-align: center;
   text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+
 }
     </style>
  
@@ -132,7 +143,7 @@
         <input type="checkbox" id="checkbox_toggle">
         <label for="checkbox_toggle" class="hamburger">☰</label>
         <!-- NAVIGATION MENUS -->
-        <div class="menu">
+        <div style="margin: 0%; padding: 0%;" class="menu">
           <li style=" list-style-type: none;"><a href="/f">Inicio</a></li>
           <li style=" list-style-type: none;"><a href="alzo.html">Sismos</a></li>
           <li style=" list-style-type: none;"><a href="/f">Convenios</a></li>
@@ -141,8 +152,11 @@
       </ul>
     </nav>
 
+    <div style="background-image: linear-gradient(to right, rgb(29, 26, 48) , rgb(22, 21, 33));">
     
-            <h1 style="color: white; font-weight: 900; font-size: 30px;" class="AlzoText">Somos #AlzoMX</h1>    
-            <p style="color: white; font-size: 15px; " class="AlzoText">AlzoMX es una Marca de Alerta miento sísmico que se encarga de informar sobre el riesgo sísmico en México, además de ser un Monitor de sismos en tiempo real para Navegadores Web, y un grupo de WhatsApp difusor de información sísmica, Somos la única plataforma a nivel nacional en alertar de un evento sísmico de manera segura a través de WhatsApp y más redes sociales. Además de brindar ayuda entre cadena para todos nuestros miembros.</p>
+            <h1 style="margin: 0%; color: white; font-weight: bold; font-size: 30px; margin-bottom: 20px; padding-top: 79px; " id="AmaranthLetter" class="AlzoText">La alerta sismica inteligente #AlzoMX</h1>    
+            <p style="color: white; font-size: 15px; padding-bottom: 79px; text-align: justify;" class="AlzoText">AlzoMX es una Marca de Alerta miento sísmico que se encarga de informar sobre el riesgo sísmico en México, además de ser un Monitor de sismos en tiempo real para Navegadores Web, y un grupo de WhatsApp difusor de información sísmica, Somos la única plataforma a nivel nacional en alertar de un evento sísmico de manera segura a través de WhatsApp y más redes sociales. Además de brindar ayuda entre cadena para todos nuestros miembros.</p>
+       
+        </div>
         </body>
         </html>
