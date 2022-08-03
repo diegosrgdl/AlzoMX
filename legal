@@ -1,0 +1,224 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amaranth">
+    <title>AlzoMX | Servicio de alerta sismica</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/kisspng-electrocardiography-pulse-computer-icons-clip-art-runtastic-heart-rate-pro-5adee826450b62.7264616015245578622828%20(3).png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_ios_ic_app.jpg">
+  
+    <style>
+    body {
+     margin: 0;
+     background-color:  rgb(255, 255, 255);
+   }
+   
+   .navbar {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 20px;
+     background-color: rgb(252, 252, 252);
+     color: #fff;
+   }
+   /* LOGO */
+   .logo {
+     font-size: 32px;
+   }
+   .menu {
+     display: flex;
+     gap: 1em;
+     font-size: 18px;
+   }
+   .menu li {
+      padding: 13px 4px;
+   }
+  
+   /* DROPDOWN MENU */
+   .services {
+     position: relative; 
+   }
+  
+   .dropdown li + li {
+     margin-top: 10px;
+   }
+   
+   .dropdown li {
+     padding: 0.5em 1em;
+     width: 8em;
+     text-align: center;
+   }
+   
+   .dropdown li:hover {
+    background-color: rgb(252, 252, 252);
+   }
+   
+   .services:hover .dropdown {
+     display: block;
+   }
+  
+  /*RESPONSIVE NAVBAR MENU STARTS*/
+  /* CHECKBOX HACK */
+  input[type=checkbox]{
+  display: none;
+  } 
+  /*HAMBURGER MENU*/
+  .hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+  }
+  
+  #AmaranthLetter{ 
+  
+  font-family: "Amaranth", sans-serif;
+  }
+  
+  #OpenSansLetter{ 
+  
+  font-family: "Open Sans", sans-serif;
+  }
+  .AlzoText{ 
+        padding-left: 410px;
+        padding-right: 410px;
+        font-family: "Open Sans", sans-serif;
+  
+    }
+  
+    .AlzoMediaMargins{ 
+        padding-left: 100px;
+  
+    }
+  
+
+    @media (max-width:1700px) {
+    .AlzoText{ 
+        padding-left: 130px;
+        padding-right: 130px;
+        font-family: "Open Sans", sans-serif;
+  
+    }
+  }
+  /* APPLYING MEDIA QUERIES */
+  @media (max-width: 768px) {
+    .AlzoText{ 
+        padding-left: 30px;
+        padding-right: 30px;
+        font-family: "Open Sans", sans-serif;
+  
+    }
+  
+    .AlzoMediaMargins{ 
+        padding-left: 30px;
+  
+    }
+  .menu { 
+  display:none;
+  position: absolute;
+  background-color: rgb(252, 252, 252);
+  right: 0;
+  left: 0;
+  text-align: center;
+  padding: 16px 0;
+  }
+  .menu li:hover {
+  display: inline-block;
+  background-color: rgb(252, 252, 252);
+  transition: 0.3s ease;
+  }
+  .menu li + li {
+  margin-top: 12px;
+  }
+  input[type=checkbox]:checked ~ .menu{
+  display: block;
+  }
+  .hamburger {
+  display: block;
+  color: rgb(36, 36, 36);
+  }
+  .dropdown {
+  left: 50%;
+  top: 30px;
+  transform: translateX(35%);
+  }
+  .dropdown li:hover {
+    background-color: rgb(252, 252, 252);
+  }
+  }
+  li a {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  
+  }
+  
+  
+  
+    </style>
+  
+  </head>
+  <body>
+    <nav class="navbar">
+      <!-- LOGO -->
+      <div class="logo"><img src="https://i.ibb.co/fnNQbYG/kisspng-electrocardiography-pulse-computer-icons-clip-art-runtastic-heart-rate-pro-5adee826450b62-72.png" style="margin-left: 10px;" width="170px" height="39px" alt=""></div>
+      <!-- NAVIGATION MENU -->
+      <ul class="nav-links">
+        <!-- USING CHECKBOX HACK -->
+        <input type="checkbox" id="checkbox_toggle">
+        <label for="checkbox_toggle" class="hamburger">☰</label>
+        <!-- NAVIGATION MENUS -->
+        <div style="margin: 0%; padding: 0%;" class="menu">
+          <li style=" list-style-type: none;"><a href="/AlzoWebHome.html">Inicio</a></li>
+          <li style=" list-style-type: none;"><a href="AlzoWebHome.html">Sismos</a></li>
+          <li style=" list-style-type: none;"><a href="/AlzoWebLegal.html">Legal</a></li>
+          <li style=" list-style-type: none;"><a href="AlzoWebPortal.html">Portal</a></li>
+        </div>
+      </ul>
+    </nav>
+  
+    
+      <h1 style="margin: 0%; color: rgb(0, 0, 0); font-weight: 500; font-size: 26px; margin-bottom: 20px; padding-top: 79px; " id="AmaranthLetter" class="AlzoText">Terminos y condiciones</h1>    
+      <p style="margin: 0%; color: rgb(19, 19, 19); font-size: 14px; text-align: justify;" class="AlzoText">El uso por parte de cualquier persona (en adelante el USUARIO) del sitio web cuya dirección electrónica es: www.alzomx.tk, así como de los subsitios web que se deriven o estén sustentados en dicho sitio web, o de los cuales también sea titular la AlzoMX A.C. (en adelante el SITIO), constituye la aceptación y acuerdo pleno e incondicional por parte del USUARIO con la AlzoMX A.C. (en adelante ALERTA SISMICA PROTOCOLO "ZO" MEXICO), en relación a los presentes Términos y Condiciones de Uso del Sitio, Apps, Servicios y cualquier conexion relacionada con AlzoMX A.C. </p>
+      <h1 style="margin: 0%; color: rgb(0, 0, 0); font-weight: 500; font-size: 24px; margin-bottom: 20px; padding-top: 29px; " id="AmaranthLetter" class="AlzoText">Terminos de uso</h1>    
+
+      <p style="margin: 0%; color: rgb(19, 19, 19); font-size: 14px; padding-bottom: 29px; text-align: justify;" class="AlzoText">El sitio web utiliza cookies para ayudar a personalizar su experiencia en línea. Al acceder al Portal AlzoMX, usted aceptó usar las cookies requeridas.
+
+        Una cookie es un archivo de texto que un servidor de página web coloca en su disco duro.dominio que emitió la cookie para usted. 
+        
+        Podemos utilizar cookies para recopilar, almacenar y rastrear información con fines estadísticos o de marketing para operar nuestro sitio web. No requieren su consentimiento, ya que siempre funcionan. Tenga en cuenta que al aceptar las cookies requeridas, también acepta las cookies de terceros, que podría usarse a través de servicios proporcionados por terceros si utiliza dichos servicios en nuestro sitio web, por ejemplo, una ventana de visualización de video proporcionada por terceros e integrada en nuestro sitio web <br><br>A menos que se indique lo contrario, AlzoMX y/o sus licenciantes poseen los derechos de propiedad intelectual de todo el material del Portal AlzoMX. No debes: Copiar o republicar material del Portal AlzoMX. Vender, alquilar o sublicenciar material del Portal AlzoMX, Reproducir, duplicar o copiar material del Portal AlzoMX Redistribuir contenido del Portal AlzoMX, Este Acuerdo comenzará en la fecha del mismo.<br><br>Partes de este sitio web ofrecen a los usuarios la oportunidad de publicar e intercambiar opiniones e información en ciertas áreas del sitio web. AlzoMX no filtra, edita, publica ni revisa los comentarios antes de su presencia en el sitio web. Los comentarios reflejan los puntos de vista y las opiniones de la persona que publica sus puntos de vista y opiniones. En la medida permitida por las leyes aplicables, AlzoMX no será responsable de los Comentarios ni de ninguna responsabilidad, daño o gasto causado y/o sufrido como resultado de cualquier uso y/o publicación de y/o aparición de los Comentarios en este sitio web. <br><br>El uso de la pagina web implica permisos para enviar notificaciones y rastrear tu ubicacion. Esto con el fin de poder estimar el ETA (Tiempo estimado de llegada) de un evento a su ubicacion, si no gusta recibir esta informacion negando el permiso dialogado no recibira el tiempo estimado de llegada de un evento y no podra ver el mapa de ondas sismicas presente en algun subsitio del sitio actual. Esta ESTRICTAMENTE PROHIBIDO robar, namipular, cambiar o inspeccionar el elemente de la pagina web.</p>
+
+        <h1 style="margin: 0%; color: rgb(0, 0, 0); font-weight: 500; font-size: 24px; margin-bottom: 20px;  " id="AmaranthLetter" class="AlzoText">Responsabilidad</h1>    
+    
+        <p style="margin: 0%; color: rgb(19, 19, 19); font-size: 14px; padding-bottom: 29px; text-align: justify;" class="AlzoText">
+          AlzoMX no garantiza que su SITIO o CONTENIDOS estén exentos de elementos que pudieran producir alteraciones o dañar el sistema informático (software y/o hardware) del USUARIO o la información almacenada en dicho sistema. Por lo cual AlzoMX no es responsable en forma alguna por los daños y perjuicios que pudiera sufrir el USUARIO, producto del acceso y/o uso del SITIO o los CONTENIDOS.
+          
+          El USUARIO reconoce y acepta ser el único responsable por el acceso y/o uso del SITIO y los CONTENIDOS, liberando de esta forma el USUARIO de cualquier responsabilidad, a AlzoMX.
+          <br><br>
+          El USUARIO es responsable de cualquier daño y/o perjuicio que ocasionase a AlzoMX por el acceso y/o uso del SITIO y/o de los CONTENIDOS. Obligándose el USUARIO a sacar en paz y a salvo a la UNIVERSIDAD LA SALLE de cualquier conflicto motivado por el acceso y/o uso del SITIO y los CONTENIDOS. Lo anterior con independencia de la obligación del USUARIO de pagar y resarcir los daños y perjuicios que le ocasione a AlzoMX con motivo del acceso y/o uso del SITIO y los CONTENIDOS.
+          <br><br>
+          Cualquiera irregularidad, anomalía o sospecha que involucre los intereses de AlzoMX, deberá reportarse inmediatamente a través del correo electrónico: soporte@alzo.mx.</p>
+          <h1 style="margin: 0%; color: rgb(0, 0, 0); font-weight: 500; font-size: 24px; margin-bottom: 20px;  " id="AmaranthLetter" class="AlzoText">Uso de Imagen</h1>    
+          <p style="margin: 0%; color: rgb(19, 19, 19); font-size: 14px; padding-bottom: 29px; text-align: justify;" class="AlzoText">El uso de la Imagen es Exclusivo para colaboradores o personal administrativo, no es posible utilizar la Imagen si no tienes cualquiera de los rangos anteriormente mencionados. en caso de utilizarlo sin previa autoriacion se hara una denuncia hacia tu contenido para que sea suspendido del servicio en donde este publico lo antes posible, a continuacion se mostrara mas informacion de la Imagen</p>
+
+          <p style="margin: 0%; color: rgb(19, 19, 19); font-size: 14px; padding-bottom: 29px; text-align: justify;" class="AlzoText">Solo las siguentes comunidades tienen el permiso de utilizar la Imagen sin previa autorizacion para propositos publicitaros, convenios, recomendaciones y uso SIN FINES DE LUCRO: <strong>AlzoMX A.C, Informacion Sismica (2022), Omar Otero Fuentes, Diego Rodriguez, Marco Antonio Acosta Moreno</strong> </p>
+    
+          <div class="AlzoText">
+
+            <img src="https://i.ibb.co/HzRgBQt/Be-Funky-sample-2-page-0001.jpg"  style="margin-bottom: 90px; width: 100%;  height: auto;"  alt="">
+
+          </div>
+
+    
+        </div>
+  
+  
+
+ 
+        
+    
+  
+  
+  </body>
+  </html>
