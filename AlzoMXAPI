@@ -1,19 +1,19 @@
 {
     "type": "FeatureCollection",
     "metadata": {
-        "generated": 1687640839000,
+        "generated": 10000001,
         "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=7",
-        "title": "USGS Earthquakes",
+        "title": "AlzoMX API",
         "status": 200,
-        "api": "1.14.0",
+        "api": "1.0.0",
         "count": 1
     },
     "features": [
         {
             "type": "Feature",
             "properties": {
-                "mag": 8,
-                "place": "26 km NW of El Habillal, Mexico",
+                "mag": 4.5,
+                "place": "Evento de Prueba",
                 "time": 495983867350,
                 "updated": 1651099092247,
                 "tz": null,
@@ -37,7 +37,7 @@
                 "gap": null,
                 "magType": "mw",
                 "type": "earthquake",
-                "title": "M 8.0 - 26 km NW of El Habillal, Mexico"
+                "title": "Evento de Prueba"
             },
             "geometry": {
                 "type": "Point",
