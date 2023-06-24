@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <title>AlzoMX | Mapa de registros sismicos</title>
+  <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .info-box {
+      position: absolute;
+      margin: 20px;
+      height: max-content;
+      padding: 20px;
+      right: 1%;
+      margin-left: 50px;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow-y: scroll;
+      orientation: horizontal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <!-- Create a container for the instructions and directions -->
+  <div>
+    <div class="info-box">
+
+
+      <span dir="auto" id="MagAlzo" style=" color: black;">Haga click en un evento para ver sus datos</span>
+      <span dir="auto" id="AlzoPlaceFeed" style=" color: black;"></span>
+      <span dir="auto" id="TimeAlzo" style=" color: black;"></span>
+
+
+
+
+
+    </div>
+
+
+    <div style="margin-left: info-box;">
+
+
+      <span dir="auto" id="MagAlzo" style=" color: black;">Haga click en un evento para ver sus datos</span>
+      <span dir="auto" id="AlzoPlaceFeed" style=" color: black;"></span>
+      <span dir="auto" id="TimeAlzo" style=" color: black;"></span>
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-99.1304, 19.4730],
+      zoom: 5.4,
+      attributionControl: false
+    })
+
+      .addControl(new mapboxgl.AttributionControl({
+        customAttribution: 'AlzoMX'
+      }));
+
+    map.on('style.load', () => {
+
+      map.addSource('earthquakes', {
+
+        // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
+        //Default USGS API Web Services https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson
+        type: 'geojson',
+        data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson'
+      });
+
+      map.addSource('plates', {
+
+
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json'
+      });
+
+
+      map.addLayer({
+
+        'id': 'earthquakes-layer',
+        'type': 'circle',
+        'source': 'earthquakes',
+        'paint': {
+
+          "circle-opacity": 0.5,
+          'circle-radius': {
+            'property': 'mag',
+            'stops': [
+              /*[0, 8],
+              [1, 8],
+              [2, 8],
+              [3, 8],*/
+              [4, 9],
+              [5, 15],
+              [6, 18],
+              [7, 45],
+              [8, 40],
+              [9, 70],
+              [10, 70],
+            ]
+          },
+
+          'circle-color': {
+            'property': 'mag',
+            'stops': [
+              /*[0, '#5AB8A6'],
+              [1, '#5AB8A6'],
+              [2, '#5AB8A6'],
+              [3, '#5AB8A6'],*/
+              [4, '#22BF57'],
+              [5, '#FCA217'],
+              [6, '#FC6D17'],
+              [7, '#F02B00'],
+              [8, '#BC2DFA'],
+              [9, '#BC2DFA'],
+              [10, '#BC2DFA'],
+            ]
+          },
+        }
+      });
+
+      map.addLayer({
+        'id': 'plates',
+        'type': 'line',
+        'source': 'plates',
+        'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-color': '#FF9F33',
+          'line-width': 4
+        }
+      });
+
+    });
+
+
+
+    map.on('click', 'earthquakes-layer', (e) => {
+
+
+      var magitude = e.features[0].properties.mag;
+      var magType = e.features[0].properties.magType;
+      var place = e.features[0].properties.place;
+      var times = e.features[0].properties.time;
+      var latlong = e.features[0].properties.coordinates;
+
+      var date = new Date(times);
+
+      var Year = date.getFullYear();
+      var Month = date.getMonth() + 1;
+      var Today = date.getDate();
+      const Hours = String(date.getHours()).padStart(2, '0');
+      const Minutes = String(date.getMinutes()).padStart(2, '0');
+      const seconds = String(date.getSeconds()).padStart(2, '0');
+
+      document.getElementById('MagAlzo').innerText = "Este evento tuvo una magnitud de:" + ' ' + magitude
+      document.getElementById('AlzoPlaceFeed').innerText = "ubicado en: " + place
+      document.getElementById('TimeAlzo').innerText = 'el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
+
+
+
+
+
+
+
+      const chapters = {
+        'Earthquake': {
+          center: e.lngLat,
+          zoom: 5.4
+        }
+      }
+      map.flyTo(chapters['Earthquake']);
+
+
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
