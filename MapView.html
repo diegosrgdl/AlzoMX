@@ -32,10 +32,13 @@
       padding: 20px;
       right: 1%;
       margin-left: 50px;
-      background-color: #fff;
       border-radius: 10px;
       overflow-y: scroll;
-      orientation: horizontal;
+      background-color: rgba(34, 34, 34, 0.4);
+      -webkit-backdrop-filter: blur(3px);
+      -moz-backdrop-filter: blur(3px);
+      -ms-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
     }
   </style>
 </head>
@@ -44,35 +47,23 @@
 
   <div id="map"></div>
   <!-- Create a container for the instructions and directions -->
-  <div>
-    <div class="info-box">
+
+  <div class="info-box">
 
 
-      <span dir="auto" id="MagAlzo" style=" color: black;">Haga click en un evento para ver sus datos</span>
-      <span dir="auto" id="AlzoPlaceFeed" style=" color: black;"></span>
-      <span dir="auto" id="TimeAlzo" style=" color: black;"></span>
-
-
-
-
-
-    </div>
-
-
-    <div style="margin-left: info-box;">
-
-
-      <span dir="auto" id="MagAlzo" style=" color: black;">Haga click en un evento para ver sus datos</span>
-      <span dir="auto" id="AlzoPlaceFeed" style=" color: black;"></span>
-      <span dir="auto" id="TimeAlzo" style=" color: black;"></span>
+    <span dir="auto" id="MagAlzo" style=" color: rgb(131, 131, 131);">Haga click en un evento para ver sus datos</span>
+    <span dir="auto" id="AlzoPlaceFeed" style=" color: rgb(131, 131, 131);"></span>
+    <span dir="auto" id="TimeAlzo" style=" color: rgb(131, 131, 131);"></span>
 
 
 
 
-
-    </div>
 
   </div>
+
+
+
+
 
 
   <script>
@@ -81,7 +72,7 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/mapbox/dark-v11',
       center: [-99.1304, 19.4730],
       zoom: 5.4,
       attributionControl: false
