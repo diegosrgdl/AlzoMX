@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>AlzoMX | Mapa de registros sismicos</title>
+  <title>AlzoMX 1.0.3 | Monitor de riesgos</title>
   <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
   <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -25,10 +25,15 @@
       width: 100%;
     }
 
-    .info-box {
+    .container {
+      /*Configuracion importante NO BORRAR*/
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: max-content;
+      /*Configuracion importante NO BORRAR*/
       position: absolute;
       margin: 20px;
-      height: max-content;
       padding: 20px;
       right: 1%;
       margin-left: 50px;
@@ -39,6 +44,13 @@
       -moz-backdrop-filter: blur(3px);
       -ms-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
+      color: rgb(131, 131, 131);
+
+    }
+
+    .image {
+
+      margin-left: 6px;
     }
   </style>
 </head>
@@ -48,159 +60,183 @@
   <div id="map"></div>
   <!-- Create a container for the instructions and directions -->
 
-  <div class="info-box">
-
-
-    <span dir="auto" id="MagAlzo" style=" color: rgb(131, 131, 131);">Haga click en un evento para ver sus datos</span>
-    <span dir="auto" id="AlzoPlaceFeed" style=" color: rgb(131, 131, 131);"></span>
-    <span dir="auto" id="TimeAlzo" style=" color: rgb(131, 131, 131);"></span>
+  <div style="height: max-content; ">
 
 
 
-
-
-  </div>
-
-
+    <div class="container">
+      <span dir="auto" id="MagAlzo">Haga click en un evento para ver sus datos</span>
+      <span dir="auto" id="AlzoPlaceFeed"></span>
+      <span dir="auto" id="TimeAlzo"></span>
+      <img src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" alt="Imagen" class="image" id="earthqukesimagenes"
+        width="30px" height="30px">
+    </div>
 
 
 
 
-  <script>
 
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v11',
-      center: [-99.1304, 19.4730],
-      zoom: 5.4,
-      attributionControl: false
-    })
-
-      .addControl(new mapboxgl.AttributionControl({
-        customAttribution: 'AlzoMX'
-      }));
-
-    map.on('style.load', () => {
-
-      map.addSource('earthquakes', {
-
-        // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
-        //Default USGS API Web Services https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson
-        type: 'geojson',
-        data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson'
-      });
-
-      map.addSource('plates', {
 
 
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json'
-      });
 
 
-      map.addLayer({
 
-        'id': 'earthquakes-layer',
-        'type': 'circle',
-        'source': 'earthquakes',
-        'paint': {
 
-          "circle-opacity": 0.5,
-          'circle-radius': {
-            'property': 'mag',
-            'stops': [
-              /*[0, 8],
-              [1, 8],
-              [2, 8],
-              [3, 8],*/
-              [4, 9],
-              [5, 15],
-              [6, 18],
-              [7, 45],
-              [8, 40],
-              [9, 70],
-              [10, 70],
-            ]
+    <script>
+
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v11',
+        center: [-99.1304, 19.4730],
+        zoom: 5.4,
+        attributionControl: false
+      })
+
+        .addControl(new mapboxgl.AttributionControl({
+          customAttribution: 'AlzoMX'
+        }));
+
+      map.on('style.load', () => {
+
+        map.addSource('earthquakes', {
+
+          // Ejemplo de Busqueda con +M5 https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=1985-09-07&endtime=1985-09-20&minmagnitude=5
+          //Default USGS API Web Services https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson
+          type: 'geojson',
+          data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson'
+        });
+
+        map.addSource('plates', {
+
+
+          type: 'geojson',
+          data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json'
+        });
+
+
+        map.addLayer({
+
+          'id': 'earthquakes-layer',
+          'type': 'circle',
+          'source': 'earthquakes',
+          'paint': {
+
+            "circle-opacity": 0.5,
+            'circle-radius': {
+              'property': 'mag',
+              'stops': [
+                /*[0, 8],
+                [1, 8],
+                [2, 8],
+                [3, 8],*/
+                [4, 9],
+                [5, 15],
+                [6, 18],
+                [7, 45],
+                [8, 40],
+                [9, 70],
+                [10, 70],
+              ]
+            },
+
+            'circle-color': {
+              'property': 'mag',
+              'stops': [
+                /*[0, '#5AB8A6'],
+                [1, '#5AB8A6'],
+                [2, '#5AB8A6'],
+                [3, '#5AB8A6'],*/
+                [4, '#22BF57'],
+                [5, '#FCA217'],
+                [6, '#FC6D17'],
+                [7, '#F02B00'],
+                [8, '#BC2DFA'],
+                [9, '#BC2DFA'],
+                [10, '#BC2DFA'],
+              ]
+            },
+          }
+        });
+
+        map.addLayer({
+          'id': 'plates',
+          'type': 'line',
+          'source': 'plates',
+          'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
           },
+          'paint': {
+            'line-color': '#FF9F33',
+            'line-width': 4
+          }
+        });
 
-          'circle-color': {
-            'property': 'mag',
-            'stops': [
-              /*[0, '#5AB8A6'],
-              [1, '#5AB8A6'],
-              [2, '#5AB8A6'],
-              [3, '#5AB8A6'],*/
-              [4, '#22BF57'],
-              [5, '#FCA217'],
-              [6, '#FC6D17'],
-              [7, '#F02B00'],
-              [8, '#BC2DFA'],
-              [9, '#BC2DFA'],
-              [10, '#BC2DFA'],
-            ]
-          },
-        }
       });
 
-      map.addLayer({
-        'id': 'plates',
-        'type': 'line',
-        'source': 'plates',
-        'layout': {
-          'line-join': 'round',
-          'line-cap': 'round'
-        },
-        'paint': {
-          'line-color': '#FF9F33',
-          'line-width': 4
+
+
+      map.on('click', 'earthquakes-layer', (e) => {
+
+
+        var magitude = e.features[0].properties.mag;
+        var magType = e.features[0].properties.magType;
+        var place = e.features[0].properties.place;
+        var times = e.features[0].properties.time;
+        var latlong = e.features[0].properties.coordinates;
+
+        var date = new Date(times);
+
+        var Year = date.getFullYear();
+        var Month = date.getMonth() + 1;
+        var Today = date.getDate();
+        const Hours = String(date.getHours()).padStart(2, '0');
+        const Minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+
+
+
+
+        document.getElementById('MagAlzo').innerText = "Este evento tuvo una magnitud de:" + ' ' + magitude
+        document.getElementById('AlzoPlaceFeed').innerText = "ubicado en: " + place
+        document.getElementById('TimeAlzo').innerText = 'el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
+
+
+
+        if (magitude > 0.0) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png'
         }
+
+        if (magitude > 3.9) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_weak_app.png'
+        }
+
+        if (magitude > 4.9) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_moderate_app.png'
+        }
+
+        if (magitude > 6.0) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_strong_app.png'
+        }
+
+
+
+
+        const chapters = {
+          'Earthquake': {
+            center: e.lngLat,
+            zoom: 5.4
+          }
+        }
+        map.flyTo(chapters['Earthquake']);
+
+
       });
-
-    });
-
-
-
-    map.on('click', 'earthquakes-layer', (e) => {
-
-
-      var magitude = e.features[0].properties.mag;
-      var magType = e.features[0].properties.magType;
-      var place = e.features[0].properties.place;
-      var times = e.features[0].properties.time;
-      var latlong = e.features[0].properties.coordinates;
-
-      var date = new Date(times);
-
-      var Year = date.getFullYear();
-      var Month = date.getMonth() + 1;
-      var Today = date.getDate();
-      const Hours = String(date.getHours()).padStart(2, '0');
-      const Minutes = String(date.getMinutes()).padStart(2, '0');
-      const seconds = String(date.getSeconds()).padStart(2, '0');
-
-      document.getElementById('MagAlzo').innerText = "Este evento tuvo una magnitud de:" + ' ' + magitude
-      document.getElementById('AlzoPlaceFeed').innerText = "ubicado en: " + place
-      document.getElementById('TimeAlzo').innerText = 'el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
-
-
-
-
-
-
-
-      const chapters = {
-        'Earthquake': {
-          center: e.lngLat,
-          zoom: 5.4
-        }
-      }
-      map.flyTo(chapters['Earthquake']);
-
-
-    });
-  </script>
+    </script>
 
 
 
