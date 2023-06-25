@@ -65,9 +65,7 @@
 
 
     <div class="container">
-      <span dir="auto" id="MagAlzo">Haga click en un evento para ver sus datos</span>
-      <span dir="auto" id="AlzoPlaceFeed"></span>
-      <span dir="auto" id="TimeAlzo"></span>
+      <span dir="auto" id="AlzoEartquakeDATA">Haga click en un evento para ver sus datos</span>
       <img src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" alt="Imagen" class="image" id="earthqukesimagenes"
         width="30px" height="30px">
     </div>
@@ -201,10 +199,7 @@
 
 
 
-        document.getElementById('MagAlzo').innerText = "Este evento tuvo una magnitud de:" + ' ' + magitude
-        document.getElementById('AlzoPlaceFeed').innerText = " ubicado en: " + place
-        document.getElementById('TimeAlzo').innerText = ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
-
+        document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
 
 
         if (magitude > 0.0) {
