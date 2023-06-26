@@ -52,6 +52,13 @@
 
       margin-left: 6px;
     }
+
+    #markerpopocatepetl {
+      background-image: url('https://i.ibb.co/bQwv6s2/descarga.gif');
+      background-size: cover;
+      width: 35px;
+      height: 35px;
+    }
   </style>
 </head>
 
@@ -96,6 +103,30 @@
         .addControl(new mapboxgl.AttributionControl({
           customAttribution: 'AlzoMX'
         }));
+
+
+
+      const e4l = document.createElement('div');
+      e4l.id = 'markerpopocatepetl';
+      new mapboxgl.Marker(e4l)
+        .setLngLat([-103.6170, 19.5121])
+        .addTo(map);
+
+
+      const e2l = document.createElement('div');
+      e2l.id = 'markerpopocatepetl';
+      new mapboxgl.Marker(e2l)
+        .setLngLat([-98.6274, 19.0226])
+        .addTo(map);
+
+      const e223l = document.createElement('div');
+      e223l.id = 'markerpopocatepetl';
+      new mapboxgl.Marker(e223l)
+        .setLngLat([-90.8808, 14.4743])
+        .addTo(map);
+
+
+
 
       map.on('style.load', () => {
 
