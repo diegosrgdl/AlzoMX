@@ -77,17 +77,6 @@
         class="image" id="earthqukesimagenes" width="30px" height="30px">
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
     <script>
 
 
@@ -302,10 +291,6 @@
         if (magitude > 6.0) {
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_strong_app.png'
         }
-
-
-
-
         const chapters = {
           'Earthquake': {
             center: e.lngLat,
@@ -313,19 +298,7 @@
           }
         }
         map.flyTo(chapters['Earthquake']);
-
-
       });
-
-
-
-
-
-
-
-
-
-
 
 
       map.on('click', 'alzoMX-layer', (e) => {
@@ -345,9 +318,6 @@
         const Hours = String(date.getHours()).padStart(2, '0');
         const Minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
-
-
-
 
 
         document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds + " por AlzoMX"
@@ -388,6 +358,30 @@
     </script>
 
 
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBDMGXQ68ZovBG_wwpxF6TQBSpA93XvtzI",
+        authDomain: "alzomxapp.firebaseapp.com",
+        projectId: "alzomxapp",
+        storageBucket: "alzomxapp.appspot.com",
+        messagingSenderId: "716817542255",
+        appId: "1:716817542255:web:72ff7e89d708342f32f19a",
+        measurementId: "G-V4RBLLTLTT"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
 
 
 </body>
