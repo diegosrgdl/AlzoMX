@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>AlzoMX 1.0.4 | Monitor de riesgos</title>
+  <title>AlzoMX 1.0.3 | Monitor de riesgos</title>
   <link rel="apple-touch-icon" href="https://i.ibb.co/Df9zt21/iOSic.jpg">
   <link rel="icon" type="image/png" href="https://i.ibb.co/6mKTgNw/alzo-App-Logo.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -65,9 +65,9 @@
 
 
     <div class="container">
-      <span dir="auto" id="AlzoEartquakeDATA">Haga click en un evento para ver sus datos</span>
-      <img src="https://i.ibb.co/RycxrNq/alzo-App-Logo-1.png" alt="Imagen" class="image" id="earthqukesimagenes"
-        width="30px" height="30px">
+      <span dir="auto" id="AlzoEartquakeDATA">Haga clic en un evento para ver sus datos</span>
+      <img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png" alt="Imagen"
+        class="image" id="earthqukesimagenes" width="30px" height="30px">
     </div>
 
 
@@ -107,11 +107,63 @@
           data: 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson'
         });
 
+        map.addSource('AlzoMXAPI', {
+
+          type: 'geojson',
+          data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/AlzoMXAPI'
+        });
+
+
         map.addSource('plates', {
 
 
           type: 'geojson',
           data: 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/plates.json'
+        });
+
+
+        map.addLayer({
+
+          'id': 'alzoMX-layer',
+          'type': 'circle',
+          'source': 'AlzoMXAPI',
+          'paint': {
+
+            "circle-opacity": 0.5,
+            'circle-radius': {
+              'property': 'mag',
+              'stops': [
+                [0, 8],
+                [1, 8],
+                [2, 8],
+                [3, 8],
+                [4, 9],
+                [5, 15],
+                [6, 18],
+                [7, 45],
+                [8, 40],
+                [9, 70],
+                [10, 70],
+              ]
+            },
+
+            'circle-color': {
+              'property': 'mag',
+              'stops': [
+                [0, '#5AB8A6'],
+                [1, '#5AB8A6'],
+                [2, '#5AB8A6'],
+                [3, '#5AB8A6'],
+                [4, '#22BF57'],
+                [5, '#FCA217'],
+                [6, '#FC6D17'],
+                [7, '#F02B00'],
+                [8, '#BC2DFA'],
+                [9, '#BC2DFA'],
+                [10, '#BC2DFA'],
+              ]
+            },
+          }
         });
 
 
@@ -159,6 +211,8 @@
           }
         });
 
+
+
         map.addLayer({
           'id': 'plates',
           'type': 'line',
@@ -199,7 +253,7 @@
 
 
 
-        document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds
+        document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds + " por USGS"
 
 
         if (magitude > 0.0) {
@@ -231,6 +285,75 @@
 
 
       });
+
+
+
+
+
+
+
+
+
+
+
+
+      map.on('click', 'alzoMX-layer', (e) => {
+
+
+        var magitude = e.features[0].properties.mag;
+        var magType = e.features[0].properties.magType;
+        var place = e.features[0].properties.place;
+        var times = e.features[0].properties.time;
+        var latlong = e.features[0].properties.coordinates;
+
+        var date = new Date(times);
+
+        var Year = date.getFullYear();
+        var Month = date.getMonth() + 1;
+        var Today = date.getDate();
+        const Hours = String(date.getHours()).padStart(2, '0');
+        const Minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+
+
+
+
+        document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds + " por AlzoMX"
+
+
+        if (magitude > 0.0) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png'
+        }
+
+        if (magitude > 3.9) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_weak_app.png'
+        }
+
+        if (magitude > 4.9) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_moderate_app.png'
+        }
+
+        if (magitude > 6.0) {
+          document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_strong_app.png'
+        }
+
+
+
+
+        const chapters = {
+          'Earthquake': {
+            center: e.lngLat,
+            zoom: 5.4
+          }
+        }
+        map.flyTo(chapters['Earthquake']);
+
+
+      });
+
+
+
     </script>
 
 
