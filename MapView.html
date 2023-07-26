@@ -16,6 +16,9 @@
       margin: 0;
       padding: 0;
       font-family: sans-serif;
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; 
     }
 
     #map {
@@ -45,8 +48,9 @@
       -ms-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
       color: rgb(131, 131, 131);
-
-    }
+      scrollbar-width: none;
+      -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none;     }
 
     .image {
 
@@ -63,7 +67,41 @@
 </head>
 
 <body>
+  <div class="phppot-container">
+    <script>
+        pushNotify();
+        function pushNotify() {
+            if (!("Notification" in window)) {
 
+
+                alert("AVISO: Su navegador no admite notificaciones, posiblemente no podras reciir alertas de futuros eventos.");
+            } else if (Notification.permission === "granted") {
+                console.log("AVISO SISTEMA: Permiso de notificaciones #GRANTED");
+             
+
+                createNotification();
+            } else if (Notification.permission !== "denied") {
+                alert("AVISO: A continuacion su navegador pedira acceso a las notificaciones, es obligatorio para recibir alertas de futuros eventos.");
+                // User should give explicit permission
+                Notification.requestPermission().then((permission) => {
+                    // If the user accepts, let's create a notification
+                    createNotification();
+                });
+            }
+        }
+
+        function createNotification() {
+            var notification = new Notification('Este sistema es de uso PRIVADO', {
+                icon: 'https://i.ibb.co/dGgm1km/image.png',
+                body: 'Este sitio no se puede utlizar para alertar a medios publicos, Click para mas informacion',
+            });
+            notification.onclick = function() {
+               // window.open('');
+            };
+        }            
+
+    </script>
+</div>
   <div id="map"></div>
   <!-- Create a container for the instructions and directions -->
 
