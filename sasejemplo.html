@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapa SASMEX con círculos expandiéndose</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        // Coordenadas de Acapulco
+        const acapulcoCoords = [16.853, -99.823];
+
+        // Inicializar el mapa
+        const map = L.map('map').setView(acapulcoCoords, 10);
+
+        // Capa de mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Marcador para el centro del mapa (opcional)
+        L.marker(acapulcoCoords).addTo(map)
+            .bindPopup('Acapulco');
+
+        // Círculo grande (rojo)
+        const circleBig = L.circle(acapulcoCoords, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.2,
+            radius: 1000 // Radio inicial en metros
+        }).addTo(map);
+
+        // Círculo pequeño (azul)
+        const circleSmall = L.circle(acapulcoCoords, {
+            color: 'blue',
+            fillColor: '#00f',
+            fillOpacity: 0.2,
+            radius: 500 // Radio inicial en metros
+        }).addTo(map);
+
+        // Función para expandir los círculos lentamente
+        function expandCircles() {
+            let bigRadius = circleBig.getRadius();
+            let smallRadius = circleSmall.getRadius();
+
+            // Incrementar el radio del círculo rojo en 100 metros cada vez
+            bigRadius += 100;
+            // Incrementar el radio del círculo azul en 50 metros cada vez (la mitad de velocidad)
+            smallRadius += 50;
+
+            // Establecer los nuevos radios
+            circleBig.setRadius(bigRadius);
+            circleSmall.setRadius(smallRadius);
+
+            // Solicitar el siguiente fotograma de animación
+            requestAnimationFrame(expandCircles);
+        }
+
+        // Llamar a la función para comenzar la expansión de los círculos
+        expandCircles();
+
+    </script>
+</body>
+</html>
