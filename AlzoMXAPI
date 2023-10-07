@@ -12,8 +12,8 @@
         {
             "type": "Feature",
             "properties": {
-                "mag": 0,
-                "place": "Evento de Prueba",
+                "mag": 6.0,
+                "place": "12 km al NOROESTE de MATIAS ROMERO, OAX",
                 "time": 495983867350,
                 "updated": 1651099092247,
                 "tz": null,
@@ -37,13 +37,13 @@
                 "gap": null,
                 "magType": "mw",
                 "type": "earthquake",
-                "title": "Evento de Prueba"
+                "title": "Evento Sismico OAX 06-10-23"
             },
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -102.533,
-                    18.19,
+                   -95.11,
+                    16.96,
                     27.9
                 ]
             },
