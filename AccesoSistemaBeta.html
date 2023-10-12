@@ -106,49 +106,41 @@
 </head>
 <body>
     <div id="background">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/De_noche_en_Paseo_de_la_Reforma.JPG" alt="Fondo de imagen" />
+        <img src="https://www.cenapred.unam.mx/volcan/popocatepetl/imagenes/hd/imgVolcanPopocatepetl-TlamacasHD.jpg" alt="Fondo de imagen" />
     </div>
     <div id="login-box">
         <h2><img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/Caladoulsap%20(1).png" alt="Logo de 190x70" /></h2>
         <h2 style="margin: 0%; margin-bottom: 15px;">Acceso al programa beta</h2>
-        <form action="AlzoMonitorBeta" method="post" onsubmit="return validarAcceso()">
-            <input type="text" id="usuario" placeholder="Usuario" required>
+
+        <input type="text" id="usuario" placeholder="Usuario" required>
             <input type="password" id="contrasena" placeholder="Contraseña" required>
             <div class="button-container">
-                <button style="margin-top: 10px;" onclick="irAtras()">Atrás</button>
-                <button style="margin-top: 10px;" type="submit">Siguiente</button>
+                <button style="margin-top: 10px;" onclick="validarAcceso()">Siguiente</button>
             </div>
         </form>
         <div class="links">
             <div>
-                <a style="font-size: 15px; margin-bottom: 6px; margin-top: 15px; color: #8b8b8b;" href="#">En este acceso solo se admiten los siguente prefijos (ejemplos): co238455, ad238475</a>
+                <a style="font-size: 15px; margin-bottom: 6px; margin-top: 15px; color: #8b8b8b;">En este acceso solo se admiten los siguente prefijos (ejemplos): co238455, ad238475</a>
             </div>
-            <div>
-                <a style="font-size: 15px; text-decoration: underline; color: #0084ff;" href="#">Antes de acceder lee los terminos y condiciones</a>
-            </div>
+           
         </div>
     </div>
     <script>
-        function irAtras() {
-            window.location.replace("https://alzomx.github.io/AlzoMX/");
-        }
-
-        function irAtras() {
-            window.location.replace("https://alzomx.github.io/AlzoMX/");
-        }
+   
 
         function validarAcceso() {
             var usuario = document.getElementById("usuario").value;
             var contrasena = document.getElementById("contrasena").value;
 
-            if (usuario === "ej" && contrasena === "ej") {
+            if (usuario === "ad236900","ad229400" && contrasena === "GARCIA449.","Diegoymarcoungranequipo2023") {
+                location.href ='https://alzomx.github.io/AlzoMX/AlzoMonitorBeta';
 
-                return true;
             } else {
                 alert("Usuario o clave incorrecta. Si el problema persiste comunicate con el adiministrador.");
 
-                return false;
             }
+
+            
         }
     </script>
 </body>
