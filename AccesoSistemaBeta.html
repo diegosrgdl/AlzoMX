@@ -111,7 +111,7 @@
     <div id="login-box">
         <h2><img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/Caladoulsap%20(1).png" alt="Logo de 190x70" /></h2>
         <h2 style="margin: 0%; margin-bottom: 15px;">Acceso al programa beta</h2>
-        <form action="#" method="post" onsubmit="return validarAcceso()">
+        <form action="AlzoMonitorBeta" method="post" onsubmit="return validarAcceso()">
             <input type="text" id="usuario" placeholder="Usuario" required>
             <input type="password" id="contrasena" placeholder="Contraseña" required>
             <div class="button-container">
@@ -133,16 +133,19 @@
             window.location.replace("https://alzomx.github.io/AlzoMX/");
         }
 
+        function irAtras() {
+            window.location.replace("https://alzomx.github.io/AlzoMX/");
+        }
+
         function validarAcceso() {
             var usuario = document.getElementById("usuario").value;
             var contrasena = document.getElementById("contrasena").value;
 
-            if (usuario === "ad209400" && contrasena === "GARCIA449.") {
-                            window.location.replace("https://alzomx.github.io/AlzoMX/AlzoMonitorBeta");
+            if (usuario === "." && contrasena === ".") {
 
                 return true;
             } else {
-                            window.location.replace("https://alzomx.github.io/AlzoMX/");
+                alert("Usuario o clave incorrecta. Si el problema persiste comunicate con el adiministrador.");
 
                 return false;
             }
