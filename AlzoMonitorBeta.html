@@ -28,6 +28,7 @@
       width: 100%;
     }
 
+    
     .container {
       /*Configuracion importante NO BORRAR*/
       display: flex;
@@ -41,16 +42,14 @@
       right: 1%;
       margin-left: 50px;
       border-radius: 10px;
-      overflow-y: scroll;
       background-color: rgba(34, 34, 34, 0.4);
       -webkit-backdrop-filter: blur(3px);
       -moz-backdrop-filter: blur(3px);
       -ms-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
       color: rgb(131, 131, 131);
-      scrollbar-width: none;
       -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none;     }
+  }
 
     .image {
 
@@ -67,53 +66,18 @@
 </head>
 
 <body>
-  <div class="phppot-container">
-    <script>
-        pushNotify();
-        function pushNotify() {
-            if (!("Notification" in window)) {
 
+  
 
-                alert("AVISO: Su navegador no admite notificaciones, posiblemente no podras reciir alertas de futuros eventos.");
-            } else if (Notification.permission === "granted") {
-                console.log("AVISO SISTEMA: Permiso de notificaciones #GRANTED");
-             
-
-                createNotification();
-            } else if (Notification.permission !== "denied") {
-                alert("AVISO: A continuacion su navegador pedira acceso a las notificaciones, es obligatorio para recibir alertas de futuros eventos.");
-                // User should give explicit permission
-                Notification.requestPermission().then((permission) => {
-                    // If the user accepts, let's create a notification
-                    createNotification();
-                });
-            }
-        }
-
-        function createNotification() {
-            var notification = new Notification('Este sistema es de uso PRIVADO', {
-                icon: 'https://i.ibb.co/dGgm1km/image.png',
-                body: 'Este sitio no se puede utlizar para alertar a medios publicos, Click para mas informacion',
-            });
-            notification.onclick = function() {
-               // window.open('');
-            };
-        }            
-
-    </script>
 </div>
   <div id="map"></div>
-  <!-- Create a container for the instructions and directions -->
-
-  <div style="height: max-content; ">
-
-
-
-    <div class="container">
-      <span dir="auto" id="AlzoEartquakeDATA">Haga clic en un evento para ver sus datos</span>
-      <img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png" alt="Imagen"
-        class="image" id="earthqukesimagenes" width="30px" height="30px">
-    </div>
+  
+  <div style="background-color: rgb(68, 68, 68); position: absolute; top: 20px; right: 20px; z-index: 2; display: flex; align-items: center; justify-content: center;">
+    <span id="AlzoEartquakeDATA" style="color: white; white-space: nowrap;">Haga click en un evento para saber informacion</span>
+    <img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png" id="earthqukesimagenes" alt="Imagen" width="30" height="30" style="margin-left: 10px;">
+  </div>
+  
+  
 
     <script>
 
@@ -121,7 +85,7 @@
       mapboxgl.accessToken = 'pk.eyJ1IjoiYWx6b2FsZXJ0YXNpc21pY2EiLCJhIjoiY2wyNHM2c25vMjNoejNpcWRrb3Y4MzV6ciJ9.D2pXLxF0emuIHvrW-n181Q';
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v11',
+        style: 'mapbox://styles/mapbox/satellite-streets-v12',
         center: [-99.1304, 19.4730],
         zoom: 5.4,
         attributionControl: false
@@ -214,7 +178,7 @@
                 [3, '#5AB8A6'],
                 [4, '#22BF57'],
                 [5, '#FCA217'],
-                [6, '#FC6D17'],
+                [6, '#ff0000 '],
                 [7, '#F02B00'],
                 [8, '#BC2DFA'],
                 [9, '#BC2DFA'],
@@ -242,7 +206,7 @@
                 [3, 8],*/
                 [4, 9],
                 [5, 15],
-                [6, 18],
+                [6, 25],
                 [7, 45],
                 [8, 40],
                 [9, 70],
@@ -289,6 +253,9 @@
 
 
 
+
+      
+
       map.on('click', 'earthquakes-layer', (e) => {
 
 
@@ -326,7 +293,7 @@
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_moderate_app.png'
         }
 
-        if (magitude > 6.0) {
+        if (magitude > 5.9) {
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_strong_app.png'
         }
         const chapters = {
@@ -373,7 +340,7 @@
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_moderate_app.png'
         }
 
-        if (magitude > 6.0) {
+        if (magitude > 5.9) {
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_strong_app.png'
         }
 
@@ -390,8 +357,31 @@
 
 
       });
-
-
+      e223l.addEventListener('click', () => {
+  // Verificar si el navegador admite notificaciones
+  if ("Notification" in window) {
+    // Verificar si se ha otorgado permiso para mostrar notificaciones
+    if (Notification.permission === "granted") {
+      // Crear y mostrar una notificación
+      const notification = new Notification('Hola', {
+        body: '¡Hola! Has hecho clic en el marcador Popocatepetl.'
+      });
+    } else if (Notification.permission !== "denied") {
+      // Si no se ha denegado el permiso, solicitar permiso al usuario
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          // Si se otorga el permiso, crear y mostrar la notificación
+          const notification = new Notification('Hola', {
+            body: '¡Hola! Has hecho clic en el marcador Popocatepetl.'
+          });
+        }
+      });
+    }
+  } else {
+    // Si el navegador no admite notificaciones, mostrar una alerta
+    alert("AVISO: Su navegador no admite notificaciones, posiblemente no podrá recibir alertas de futuros eventos.");
+  }
+});
 
     </script>
 
