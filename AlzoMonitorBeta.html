@@ -29,7 +29,7 @@
     }
 
     
-  .container {
+.container {
   /*Configuracion importante NO BORRAR*/
   display: flex;
   justify-content: center;
@@ -59,6 +59,15 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Agrega sombra al contenedor */
 }
 
+#AlzoEartquakeDATA {
+  margin-bottom: 10px; /* Añade espacio entre el texto y la fuente */
+}
+
+#source {
+  font-size: 14px;
+  color: #999; /* Cambia el color del texto a gris */
+}
+
     .image {
 
       margin-left: 6px;
@@ -82,7 +91,8 @@
   
 
   <div class="container">
-    <span dir="auto" id="AlzoEartquakeDATA">Bienvenido: Haga click en un sismo para ver detalles</span>
+<span dir="auto" id="AlzoEartquakeDATA">Bienvenido: Haga click en un sismo para ver detalles</span>
+<span id="source"></span>
     <img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png" alt="Imagen"
       class="image" id="earthqukesimagenes" width="30px" height="30px">
   </div>
@@ -288,8 +298,8 @@
 
 
 
-        document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds + " por USGS"
-
+document.getElementById('AlzoEartquakeDATA').innerText = "Este evento tuvo una magnitud de: " + magitude + " ubicado en: " + place + ' el ' + Today + '/' + Month + '/' + Year + ' a las ' + Hours + ':' + Minutes + ':' + seconds;
+document.getElementById('source').innerText = "POR USGS";
 
         if (magitude > 0.0) {
           document.getElementById('earthqukesimagenes').src = 'https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_noload_app.png'
