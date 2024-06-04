@@ -1,0 +1,219 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inicio: AlzoMX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/png" sizes="64x64" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_ios_ic_app.jpg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/alzo_ios_ic_app.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+* {box-sizing: border-box;}
+body { 
+  margin: 0;
+  background-color: #0e0e0e;
+  color: #f1f1f1;
+  font-family: "Noto Color Emoji", sans-serif;
+  font-weight: 400;
+  
+}
+#navbar {
+  overflow: hidden;
+  background-color: #111111;
+  padding: 30px 10px;
+  transition: 0.4s;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#navbar a {
+  color: #f1f1f1;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+#navbar #logo img {
+  height: 45px;
+  transition: 0.4s;
+}
+#navbar a:hover {
+  background-color: #0e0e0e;
+  color: white;
+}
+#navbar a.active {
+  background-color: rgb(26, 26, 26);
+  color: white;
+}
+#navbar-right {
+  display: flex;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.AlzoText, .AlzoTitle {
+  padding-left: 100px;
+  padding-right: 100px;
+  font-family: "Poppins", sans-serif;
+}
+.AlzoText {
+  font-weight: 200;
+}
+.AlzoTitle {
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 25%;
+  margin-left: 20px;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(31, 31, 31, 0.2);
+}
+.container {
+  padding: 2px 16px;
+}
+@media screen and (max-width: 580px) {
+  #navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px !important;
+  }
+  #navbar a {
+    display: block;
+    text-align: left;
+  }
+  #navbar-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .AlzoText, .AlzoTitle, .alzomini {
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+
+  }
+  .card {
+    width: 90%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+}
+.AlzoTextCards, .AlzoTitleCards, .alzomini { 
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+.alzomini { 
+  font-weight: 200;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0c0c; 
+}
+::-webkit-scrollbar-thumb {
+  background: #141414; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #161616; 
+}
+
+@media screen and (max-width: 580px) {
+  #navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+  #navbar a {
+    display: block;
+    text-align: center;
+    margin: 5px 0;
+  }
+  #navbar-right {
+    width: 100%;
+    justify-content: center;
+  }
+  .AlzoText, .AlzoTitle, .alzomini {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
+  .card {
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+}
+
+</style>
+</head>
+<body>
+<div id="navbar">
+  <a href="#default" id="logo"><img src="https://raw.githubusercontent.com/AlzoMX/AlzoMX/main/Web/Resources/image%20(6)%20(3)%20(1).png" alt="AlzoMX Logo"></a>
+  <div id="navbar-right">
+    <a class="active" href="#home">Tablero</a>
+    <a href="#contact">Apps</a>
+    <a href="#about">Red Beta</a>
+    <a href="#about">Contacto</a>
+  </div>
+</div>
+<div style="margin-top:0px; padding-top: 200px; padding-bottom:70px;font-size:30px; background-image: linear-gradient(to right, rgb(29, 26, 48), rgb(22, 21, 33));">
+  <h1 class="AlzoTitle" style="margin: 0; color: white; font-weight: 500; font-size: 40px; margin-bottom: 20px; padding-top: 79px;">En poco tiempo podras disfrutar de una nueva version de AlzoMX</h1>    
+  <p class="AlzoText" style="margin: 0; color: white; font-size: 15px; padding-bottom: 79px; text-align: justify;">Estamos trabajando constantemente en la mejora de nuestro sitio para brindarte la mejor información sísmica disponible. Nuestro equipo está dedicado a optimizar el monitor y proporcionar datos precisos y confiables en tiempo real. Pronto, experimentarás una experiencia mejorada que te mantendrá al tanto de la actividad sísmica de manera más eficiente y segura.</p>
+</div>
+
+<div style="margin-top:0px; margin-bottom:0px; padding-bottom:100px;font-size:30px; background-color: rgb(10, 10, 10); display: flex; flex-direction: column; align-items: center;">
+  <p class="AlzoTitle" style="font-size: 40px; text-align: center;">¿Quienes somos nosotros?</p>
+  <p class="alzomini" style="font-size: 17px; margin-top: 10px; margin-bottom: 60px;">lo que principalmente hacemos</p>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <div class="card" style="background-color: rgb(14, 14, 14); text-align: center;">
+      <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h4 style="margin: 0; margin-top: 35px; margin-bottom: 15px;"><b>🌐</b></h4> 
+        <h4 class="AlzoTitleCards" style="font-size: 25px; margin: 0;"><b>Fuente de datos</b></h4> 
+        <p class="AlzoTextCards" style="font-size: 20px; margin: 0; margin-top: 20px; margin-bottom: 40px;">Enviamos informacion sismica de varios medios oficiales a un solo punto.</p> 
+      </div> 
+    </div>
+    <div class="card" style="background-color: rgb(14, 14, 14); text-align: center;">
+      <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h4 style="margin: 0; margin-top: 35px; margin-bottom: 15px;"><b>🚨</b></h4> 
+        <h4 class="AlzoTitleCards" style="font-size: 25px; margin: 0;"><b>Difusor</b></h4> 
+        <p class="AlzoTextCards" style="font-size: 20px; margin: 0; margin-top: 20px; margin-bottom: 40px;">Difundimos de manera automatica informacion de valor y importancia en situaciones criticas.</p> 
+      </div> 
+    </div>
+    <div class="card" style="background-color: rgb(14, 14, 14); text-align: center;">
+      <div class="container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h4 style="margin: 0; margin-top: 35px; margin-bottom: 15px;"><b>📢</b></h4> 
+        <h4 class="AlzoTitleCards" style="font-size: 25px; margin: 0;"><b>Comunicacion</b></h4> 
+        <p class="AlzoTextCards" style="font-size: 20px; margin: 0; margin-top: 20px; margin-bottom: 40px;">Los mismos usuarios retroalimentan la informacion oficial comunicandose por chats.</p> 
+      </div> 
+    </div>
+  </div>
+</div>
+
+
+<script>
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("navbar").style.padding = "25px 10px";
+    document.getElementById("logo").children[0].style.height = "35px";
+  } else {
+    document.getElementById("navbar").style.padding = "30px 10px";
+    document.getElementById("logo").children[0].style.height = "45px";
+  }
+}
+</script>
+</body>
+</html>
