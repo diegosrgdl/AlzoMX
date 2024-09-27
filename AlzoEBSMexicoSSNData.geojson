@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated": 1695732000000,
+    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query",
+    "title": "USGS Earthquakes",
+    "status": 200,
+    "api": "1.10.2",
+    "count": 1
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "mag": 1.4,
+        "place": "1 km al SURESTE de MIGUEL HIDALGO, CDMX.",
+        "time": 1727351481000,
+        "updated": 1695732000000,
+        "tz": null,
+        "url": "http://www.ssn.unam.mx/#latest",
+        "felt": null,
+        "cdi": null,
+        "sig": 10,
+        "net": "ci",
+        "code": "12345678",
+        "ids": ",ci12345678,",
+        "sources": ",ci,",
+        "types": ",origin,",
+        "nst": null,
+        "dmin": null,
+        "rms": 0.12,
+        "gap": null,
+        "magType": "ml",
+        "type": "earthquake",
+        "title": "M 1.1 - 5 km NE of Los Angeles, CA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.18,
+          19.40,
+          10.0
+        ]
+      },
+      "id": "ci12345678"
+    }
+  ],
+  "bbox": [
+    -118.155,
+    34.054,
+    0,
+    -118.155,
+    34.054,
+    8.4
+  ]
+}
