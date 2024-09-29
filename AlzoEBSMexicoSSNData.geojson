@@ -15,7 +15,7 @@
       "properties": {
         "mag": 4.3,
         "place": "2 km al SURESTE de V ALVARO OBREGON, CDMX",
-        "time": 1727604144,
+        "time": 1727625865000,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us00000000",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us00000000&format=geojson",
