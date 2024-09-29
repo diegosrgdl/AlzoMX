@@ -15,7 +15,7 @@
       "properties": {
         "mag": 4.3,
         "place": "2 km al SURESTE de GUILLERMO, CDMX",
-        "time": 1727604685000,
+        "time": 1727608285000,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us00000000",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us00000000&format=geojson",
