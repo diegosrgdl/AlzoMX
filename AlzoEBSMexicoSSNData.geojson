@@ -1,11 +1,10 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "generated": 1727452415000,
-    "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=1&orderby=time&minmagnitude=4.0",
-    "title": "USGS Earthquakes",
+    "generated": 1727604144,
+    "title": "AlzoMX Earthquakes",
     "status": 200,
-    "api": "1.14.1",
+    "api": "1.0.0",
     "limit": 1,
     "offset": 1,
     "count": 1
@@ -16,8 +15,7 @@
       "properties": {
         "mag": 4.3,
         "place": "2 km al SURESTE de V ALVARO OBREGON, CDMX",
-        "time": 1727603852,
-        "updated": 1727603852,
+        "time": 1727604144,
         "tz": null,
         "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us00000000",
         "detail": "https://earthquake.usgs.gov/fdsnws/event/1/query?eventid=us00000000&format=geojson",
